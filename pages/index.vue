@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <NuxtPage />
-  </div>
+  <h1>Main page</h1>
 </template>
 
 <script lang="ts">
 export default defineComponent({
-  name: "App"
-});
+  name: 'Index'
+})
 </script>
