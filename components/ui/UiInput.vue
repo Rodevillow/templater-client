@@ -20,6 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
+// TODO :: move styles to file variables
 .input-wrapper {
   box-sizing: border-box;
   position: relative;

@@ -7,6 +7,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss">
+// TODO :: move styles to file variables
 .h3 {
   color: #6b978b;
 
