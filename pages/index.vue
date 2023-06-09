@@ -3,7 +3,10 @@
 </template>
 
 <script lang="ts">
+import ButtonSuccess from "~/components/ui/UiButtonSuccess.vue";
+
 export default defineComponent({
-  name: 'Index'
+  name: 'Index',
+  components: {ButtonSuccess}
 })
 </script>

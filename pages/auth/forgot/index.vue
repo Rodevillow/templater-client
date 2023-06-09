@@ -1,5 +1,13 @@
 <template>
-  <h1>Forgot</h1>
+  <div class="registration">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mx-auto">
+          FORGOT
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
