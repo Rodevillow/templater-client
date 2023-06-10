@@ -20,7 +20,8 @@ export default {
 </script>
 
 <style lang="scss">
-// TODO :: move styles to file variables
+@import "~/assets/styles/variables";
+
 .input-wrapper {
   box-sizing: border-box;
   position: relative;
@@ -31,7 +32,7 @@ export default {
     position: absolute;
     top: -13px;
     transform: translate(0, -50%);
-    color: #6b978b;
+    color: $text-color;
     background-color: transparent;
     font-weight: 400;
     font-size: 12px;
@@ -44,20 +45,22 @@ export default {
     margin: 0;
     padding: 15px;
     background-color: transparent;
-    border: 1px solid #6b978b;
+    border: 1px solid $text-color;
     border-radius: 8px;
     outline: none;
-    color: 6b978b;
+    color: $disabled-color;
+    font-size: 14px;
     font-weight: 400;
-    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0em;
   }
 
   input::placeholder {
-    color: #a0c4ba;
-
+    color: $disabled-color;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    letter-spacing: 0em;
   }
 }
 </style>

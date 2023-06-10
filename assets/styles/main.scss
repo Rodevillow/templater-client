@@ -1,6 +1,17 @@
 @import "bootstrap/scss/bootstrap";
 @import "./variables";
+@import "./fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: $text-color;
+}
 
 body {
-  // code...
+  background: $background-color;
+  width: 100vw;
+  height: 100vh;
 }

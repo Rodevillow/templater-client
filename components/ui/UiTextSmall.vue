@@ -7,10 +7,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss">
-// TODO :: move styles to file variables
 .paragraph {
-  color: #6b978b;
-
   font-size: 12px;
   font-weight: 300;
   line-height: 15px;
