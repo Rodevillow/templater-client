@@ -11,7 +11,16 @@
 </template>
 
 <script lang="ts">
+import useAppCore from "~/composables/useAppCore"
+
 export default defineComponent({
   name: "Login",
+  setup() {
+    const applicationCore = useAppCore()
+
+    applicationCore.auth.get()
+
+    return {}
+  }
 });
 </script>

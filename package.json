@@ -16,6 +16,7 @@
     "sass-loader": "^13.3.1"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
     "bootstrap": "^5.3.0",
     "pinia": "^2.1.3"
   }
