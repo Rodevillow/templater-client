@@ -21,6 +21,11 @@
         <UiInput label="Label" placeholder="Placeholder..." />
         <UiInput placeholder="Placeholder..." />
       </div>
+      <div class="d-flex flex-column gap-3 col-12">
+        <h3>Block components</h3>
+        <TheHeader />
+        <TheFooter />
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +43,9 @@ import UiTextSmall from "~/components/ui/UiTextSmall.vue";
 
 import UiInput from "~/components/ui/UiInput.vue";
 
+import TheFooter from "~/components/block/TheFooter.vue";
+import TheHeader from "~/components/block/TheHeader.vue";
+
 export default defineComponent({
   name: "Ui",
   components: {
@@ -50,6 +58,8 @@ export default defineComponent({
     UiTextH3,
     UiTextSmall,
     UiInput,
+    TheFooter,
+    TheHeader,
   },
 });
 </script>

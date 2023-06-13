@@ -6,7 +6,7 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .paragraph {
   font-size: 12px;
   font-weight: 300;

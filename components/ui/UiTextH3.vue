@@ -6,7 +6,7 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .h3 {
   font-size: 16px;
   font-weight: 300;
