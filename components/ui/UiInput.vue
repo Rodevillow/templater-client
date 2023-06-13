@@ -1,13 +1,17 @@
 <template>
   <div class="input-wrapper">
     <label>{{ label }}</label>
-    <input class="input" type="text" :placeholder="placeholder" />
+    <input class="input" :type="type" :placeholder="placeholder" />
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    type: {
+      type: String,
+    },
+
     label: {
       type: String,
     },

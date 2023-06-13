@@ -18,8 +18,8 @@
       </div>
       <div class="d-flex flex-column gap-3 col-6">
         <h3>Inputs</h3>
-        <UiInput label="Label" placeholder="Placeholder..." />
-        <UiInput placeholder="Placeholder..." />
+        <UiInput type="text" label="Label" placeholder="Placeholder..." />
+        <UiInput type="text" placeholder="Placeholder..." />
       </div>
       <div class="d-flex flex-column gap-3 col-12">
         <h3>Block components</h3>

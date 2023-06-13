@@ -12,8 +12,11 @@
 
 body {
   background: $background-color;
-  width: 100vw;
-  height: 100vh;
+}
+
+.container {
+  max-width: 1296px;
+  min-height: calc(100vh - 200px - 100px);
 }
 
 // next-link navigation
