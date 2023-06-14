@@ -1,45 +1,44 @@
 <template>
-  <header class="header">
-    <div class="logo">
-      <UiTextH1>TEMPLATER</UiTextH1>
-    </div>
-    <div class="navigation">
-      <nuxt-link to="/auth/login">Log In</nuxt-link>
-      <nuxt-link to="/auth/registration">Sing Up</nuxt-link>
+  <header class="header d-flex justify-content-between align-items-center p-5">
+    <nuxt-link to="/">
+      <UiTextH1>
+        TEMPLATER
+      </UiTextH1>
+    </nuxt-link>
+
+    <div class="header__menu">
+      <div class="header__menu-right d-flex">
+        <div class="header__menu-right_item">
+          <NuxtLink to="/auth/login">Log In</NuxtLink>
+        </div>
+        <div class="menu__right-item">
+          <NuxtLink to="/auth/registration">Sing Up</NuxtLink>
+        </div>
+      </div>
     </div>
   </header>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
-import UiTextH1 from "../ui/UiTextH1.vue";
 
-export default defineComponent({
-  name: "Header",
-  components: {
-    UiTextH1,
-  },
-});
+<script lang="ts" setup>
 </script>
+
 <style scoped lang="scss">
-@import "~/assets/styles/variables";
+@import "@/assets/styles/variables";
 
 .header {
-  width: 100%;
   height: 100px;
-  padding: 0 50px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   background-color: $secondary-color;
 
-  .logo {
-  }
+  &__menu {
+    &-right {
+      &_item {
+        margin-right: 20px;
 
-  .navigation {
-    display: flex;
-    gap: 10px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }
 </style>

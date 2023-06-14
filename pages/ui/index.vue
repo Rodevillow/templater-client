@@ -30,36 +30,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import UiButtonSuccess from "~/components/ui/UiButtonSuccess.vue";
-import UiButtonSecondary from "~/components/ui/UiButtonSecondary.vue";
-import UiButtonPrimary from "~/components/ui/UiButtonPrimary.vue";
-import UiButtonDisabled from "~/components/ui/UiButtonDisabled.vue";
+<script lang="ts" setup></script>
 
-import UiTextH1 from "~/components/ui/UiTextH1.vue";
-import UiTextH2 from "~/components/ui/UiTextH2.vue";
-import UiTextH3 from "~/components/ui/UiTextH3.vue";
-import UiTextSmall from "~/components/ui/UiTextSmall.vue";
-
-import UiInput from "~/components/ui/UiInput.vue";
-
-import TheFooter from "~/components/block/TheFooter.vue";
-import TheHeader from "~/components/block/TheHeader.vue";
-
-export default defineComponent({
-  name: "Ui",
-  components: {
-    UiButtonSecondary,
-    UiButtonSuccess,
-    UiButtonPrimary,
-    UiButtonDisabled,
-    UiTextH1,
-    UiTextH2,
-    UiTextH3,
-    UiTextSmall,
-    UiInput,
-    TheFooter,
-    TheHeader,
-  },
-});
-</script>
+<style lang="scss" scoped></style>

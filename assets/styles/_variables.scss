@@ -1,18 +1,36 @@
-// TODO :: connect styles
+// Colors
+$primary-color: #26485B;
+$secondary-color: #1B313E;
+$disabled-color: #7CA7AB;
+$success-color: #1E5820;
+$background-color: #273D4A;
+$text-color: #D1DDE3;
 
-$primary: #224d41;
-$danger: #ff4136;
+// Variables
+// .m-1 .ml-1 .mr-1 .mt-1 .mb-1 .p-1 .pl-1 .pr-1 .pt-1 .pb-1 = <$spacer>
+// .m-2 .ml-2 .mr-2 .mt-2 .mb-2 .p-2 .pl-2 .pr-2 .pt-2 .pb-2 = <$spacer * 2>
+// .m-2 .ml-3 .mr-3 .mt-3 .mb-3 .p-3 .pl-3 .pr-3 .pt-3 .pb-3 = <$spacer * 3>
+// .m-2 .ml-4 .mr-4 .mt-4 .mb-4 .p-4 .pl-4 .pr-4 .pt-4 .pb-4 = <$spacer * 4>
+// .m-2 .ml-5 .mr-5 .mt-5 .mb-5 .p-5 .pl-5 .pr-5 .pt-5 .pb-5 = <$spacer * 5>
+$spacer: 10px;
+
+// Bootstrap colors
+$primary: $primary-color;
+$secondary: $secondary-color;
+$success: $success-color;
+$info: #287ed7;
+$warning: #faa800;
+$danger: #af160e;
+$light: #c5c5c5;
+$dark: #48494d;
 
 $theme-colors: (
-  "primary": $primary,
-  "danger": $danger,
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
 );
-
-// var colors
-
-$primary-color: #26485b;
-$secondary-color: #1b313e;
-$background-color: #273d4a;
-$success-color: #1e5820;
-$disabled-color: #7ca7ab;
-$text-color: #d1dde3;

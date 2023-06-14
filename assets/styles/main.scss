@@ -1,6 +1,7 @@
+@import "fonts";
+@import "variables";
 @import "bootstrap/scss/bootstrap";
-@import "./variables";
-@import "./fonts";
+@import "spacing";
 
 * {
   margin: 0;
@@ -20,7 +21,6 @@ body {
 }
 
 // next-link navigation
-
 a {
   font-style: normal;
   font-weight: 300;
@@ -35,4 +35,10 @@ a {
     color: $disabled-color;
     transition: ease-in-out 0.3s;
   }
+}
+
+// ...
+
+.page--min-height {
+  height: calc(100vh - 300px);
 }

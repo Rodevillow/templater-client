@@ -1,7 +1,7 @@
 <template>
-  <div class="btn btn-disabled">
+  <button class="btn btn-disabled">
     <slot />
-  </div>
+  </button>
 </template>
 
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>

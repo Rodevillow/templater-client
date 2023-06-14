@@ -1,21 +1,20 @@
 <template>
   <div class="container">
     <TheHeader />
-    <slot />
+    <div class="page h-100">
+      <slot />
+    </div>
     <TheFooter />
   </div>
 </template>
 
-<script lang="ts">
-import TheFooter from "~/components/block/TheFooter.vue";
+<script setup lang="ts">
 import TheHeader from "~/components/block/TheHeader.vue";
-
-export default defineComponent({
-  components: {
-    TheHeader,
-    TheFooter,
-  },
-});
+import TheFooter from "~/components/block/TheFooter.vue";
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.page {
+  min-height: calc(100vh - 300px);
+}
+</style>
