@@ -1,7 +1,12 @@
 <template>
-  <input class="input"
-         :type="props.type"
-         :placeholder="props.placeholder"
+  <input
+    class="input"
+    :type="props.type"
+    :placeholder="props.placeholder"
+    :value="props.value"
+    @focus="onFocusEmail"
+    @input="onInputEmail"
+    @blur="onBlurEmail"
   />
 </template>
 
@@ -9,13 +14,23 @@
 const props = defineProps({
   type: {
     type: String,
-    default: "text"
+    default: "text",
   },
   placeholder: {
     type: String,
-    default: ""
+    default: "",
+  },
+  value: {
+    type: String,
+    default: "",
   },
 });
+
+const emit = defineEmits(["focus", "input", "blur"]);
+
+const onFocusEmail = (event: any) => emit("focus", event);
+const onInputEmail = (event: any) => emit("input", event);
+const onBlurEmail = (event: any) => emit("blur", event);
 </script>
 
 <style lang="scss" scoped>
