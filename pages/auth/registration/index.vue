@@ -1,24 +1,13 @@
 <template>
-  <div class="registration">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 mx-auto">
-          FORM REGISTRATION
-        </div>
-      </div>
+  <div class="row page--min-height">
+    <div class="col-4 mx-auto my-auto">
+      <RegistrationForm />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import UiButtonSuccess from "~/components/ui/UiButtonSuccess.vue";
-import UiInput from "~/components/ui/UiInput.vue";
-
-definePageMeta({
-  layout: "main",
-});
-export default defineComponent({
-  name: "Registration",
-  components: {UiInput, UiButtonSuccess},
-});
+<script lang="ts" setup>
+import RegistrationForm from "@/pages/auth/registration/components/RegistrationForm.vue"
 </script>
+
+<style lang="scss" scoped></style>

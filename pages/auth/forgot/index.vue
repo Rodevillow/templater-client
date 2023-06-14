@@ -1,17 +1,13 @@
 <template>
-  <div class="registration">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 mx-auto">
-          FORGOT
-        </div>
-      </div>
+  <div class="row page--min-height">
+    <div class="col-4 mx-auto my-auto">
+      <ForgotForm />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  name: "Forgot",
-});
+<script lang="ts" setup>
+import ForgotForm from "@/pages/auth/forgot/components/ForgotForm.vue";
 </script>
+
+<style lang="scss" scoped></style>
