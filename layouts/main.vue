@@ -1,9 +1,21 @@
-<script lang="ts" setup></script>
-
 <template>
-  <div>
-    <slot />
+  <div class="container">
+    <TheHeader />
+    <!-- TODO :: HERE WILL BE ADDED SIDEBAR COMPONENT -->
+    <div class="page h-100">
+      <slot />
+    </div>
+    <TheFooter />
   </div>
 </template>
 
-<style scoped></style>
+<script setup lang="ts">
+import TheHeader from "~/components/block/TheHeader.vue";
+import TheFooter from "~/components/block/TheFooter.vue";
+</script>
+
+<style lang="scss" scoped>
+.page {
+  min-height: calc(100vh - 300px);
+}
+</style>

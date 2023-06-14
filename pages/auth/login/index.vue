@@ -1,17 +1,13 @@
 <template>
-  <div class="registration">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 mx-auto">
-          FORM LOGIN
-        </div>
-      </div>
+  <div class="row page--min-height">
+    <div class="col-4 mx-auto my-auto">
+      <LoginForm />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  name: "Login",
-});
+<script lang="ts" setup>
+import LoginForm from "@/pages/auth/login/components/LoginForm.vue"
 </script>
+
+<style lang="scss" scoped></style>
