@@ -4,9 +4,9 @@
     :type="props.type"
     :placeholder="props.placeholder"
     :value="props.value"
-    @focus="onFocusEmail"
-    @input="onInputEmail"
-    @blur="onBlurEmail"
+    @focus="onFocus"
+    @input="onInput"
+    @blur="onBlur"
   />
 </template>
 
@@ -28,9 +28,9 @@ const props = defineProps({
 
 const emit = defineEmits(["focus", "input", "blur"]);
 
-const onFocusEmail = (event: any) => emit("focus", event);
-const onInputEmail = (event: any) => emit("input", event);
-const onBlurEmail = (event: any) => emit("blur", event);
+const onFocus = (event: any) => emit("focus", event);
+const onInput = (event: any) => emit("input", event);
+const onBlur = (event: any) => emit("blur", event);
 </script>
 
 <style lang="scss" scoped>
