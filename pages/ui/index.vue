@@ -15,39 +15,38 @@
         <UiTextH2>Default text - H2</UiTextH2>
         <UiTextH3>Default text - H3</UiTextH3>
         <UiTextSmall>Small text - Paragraph</UiTextSmall>
+        <ui-default-text
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ipsa,
+          quaerat iste suscipit, harum nostrum quisquam, dolore perferendis
+          necessitatibus quos eum. Vel tenetur ipsa, veritatis reprehenderit hic
+          deleniti quae molestias!</ui-default-text
+        >
       </div>
       <div class="d-flex flex-column gap-3 col-6">
         <h3>Inputs</h3>
         <UiInput type="text" label="Label" placeholder="Placeholder..." />
         <UiInput type="text" placeholder="Placeholder..." />
       </div>
+
       <div class="d-flex flex-column gap-3 col-12">
         <h3>Block components</h3>
         <TheHeader />
         <TheFooter />
       </div>
-      <div>
-        <div id="carouselExample" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="..." class="d-block w-100" alt="...">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+
+      <div class="d-flex flex-column gap-3 col-6 mb-2">
+        <h3>Icons</h3>
+        <UiIconDoubleChevronLeft />
+        <UiIconDoubleChevronRight />
+        <UiIconChevronLeft />
+        <UiIconChevronRight />
+        <UiIconChevronHeart />
+        <UiIconChevronHeartActive />
+        <UiIconChevronCartEmpty />
+        <UiIconChevronCartActive />
+        <UiIconBurger />
+        <UiIconGoogle />
+        <UiIconFacebook />
       </div>
     </div>
   </div>

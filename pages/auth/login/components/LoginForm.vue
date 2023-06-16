@@ -1,7 +1,11 @@
 <template>
   <div class="login-form">
     <UiTextH2 class="mb-1 text-center">LOGIN</UiTextH2>
-    <UiFormControl class="mb-1" label="Email" :errors="props.errorsFormData.email.errors">
+    <UiFormControl
+      class="mb-1"
+      label="Email"
+      :errors="props.errorsFormData.email.errors"
+    >
       <UiInput
         type="text"
         placeholder="example@test.com"
@@ -13,7 +17,7 @@
     </UiFormControl>
     <UiFormControl class="mb-3" label="Password" :errors="props.errorsFormData.password.errors">
       <UiInput
-        type="text"
+        type="password"
         placeholder="********"
         :value="props.formData.password"
         @focus="onFocusPassword"
