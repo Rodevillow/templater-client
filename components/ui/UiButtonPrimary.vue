@@ -1,5 +1,8 @@
 <template>
-  <button class="btn btn-primary" :type="props.type">
+  <button class="btn btn-primary"
+          :type="props.type"
+          @click="handleClick"
+  >
     <slot />
   </button>
 </template>
@@ -11,6 +14,8 @@ const props = defineProps({
     default: undefined,
   },
 });
+const emit = defineEmits(['click'])
+const handleClick = () => emit('click')
 </script>
 
 <style lang="scss" scoped></style>
