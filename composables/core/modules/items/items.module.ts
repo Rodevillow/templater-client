@@ -5,6 +5,7 @@ export class ItemsModule implements BasicModuleInterface {
     constructor() {
         this.itemsService = new ItemsService();
     }
+
     get() {
         this.itemsService.get();
     }

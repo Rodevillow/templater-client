@@ -1,7 +1,7 @@
 import AuthModule from "~/composables/core/modules/auth/auth.module";
 import ItemsModule from "~/composables/core/modules/items/items.module";
 
-interface CoreModules {
+export interface CoreModules {
     auth:BasicModuleInterface,
     items:BasicModuleInterface
 }

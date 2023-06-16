@@ -30,33 +30,28 @@
 
       <div class="d-flex flex-column gap-3 col-12">
         <h3>Block components</h3>
-        <the-card></the-card>
         <TheHeader />
         <TheFooter />
       </div>
 
       <div class="d-flex flex-column gap-3 col-6 mb-2">
         <h3>Icons</h3>
-        <ui-icon-double-chevron-left />
-        <ui-icon-double-chevron-right />
-        <ui-icon-chevron-left />
-        <ui-icon-chevron-right />
-        <ui-icon-chevron-heart />
-        <ui-icon-chevron-heart-active />
-        <ui-icon-chevron-cart-empty />
-        <ui-icon-chevron-cart-active />
-        <ui-icon-burger />
-        <ui-icon-google />
-        <ui-icon-facebook />
+        <UiIconDoubleChevronLeft />
+        <UiIconDoubleChevronRight />
+        <UiIconChevronLeft />
+        <UiIconChevronRight />
+        <UiIconChevronHeart />
+        <UiIconChevronHeartActive />
+        <UiIconChevronCartEmpty />
+        <UiIconChevronCartActive />
+        <UiIconBurger />
+        <UiIconGoogle />
+        <UiIconFacebook />
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import TheCard from "~/components/block/card/TheCard.vue";
-
-const components = defineComponent({ TheCard });
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped></style>

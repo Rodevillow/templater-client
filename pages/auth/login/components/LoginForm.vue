@@ -15,18 +15,17 @@
         @blur="onBlurEmail"
       />
     </UiFormControl>
-    <UiFormControl
-      class="mb-3"
-      label="Password"
-      :errors="props.errorsFormData.password.errors"
-    >
+    <UiFormControl class="mb-3" label="Password" :errors="props.errorsFormData.password.errors">
       <UiInput
         type="password"
         placeholder="********"
         :value="props.formData.password"
+        @focus="onFocusPassword"
+        @input="onInputPassword"
+        @blur="onBlurPassword"
       />
     </UiFormControl>
-    <UiButtonPrimary class="w-100">LOGIN</UiButtonPrimary>
+    <UiButtonPrimary @click="onSubmit" type="submit" class="w-100">LOGIN</UiButtonPrimary>
 
     <div class="mt-2 text-center">
       <nuxt-link to="/auth/forgot">Forgot password?</nuxt-link>
@@ -36,7 +35,7 @@
 
 <script lang="ts" setup>
 import { errorsFormData, formData } from "../composables";
-import { validateEmail } from "@/pages/auth/login/composables/validation";
+import { validateEmail, validatePassword } from "@/pages/auth/login/composables/validation";
 
 const props = defineProps({
   formData: {
@@ -59,6 +58,33 @@ const onInputEmail = (event: any) => {
 };
 const onBlurEmail = (event: any) => {
   formData.email = event.target.value;
+};
+
+const onFocusPassword = (event: any) => {
+  formData.password = event.target.value;
+  errorsFormData.password.isDirty = true;
+};
+const onInputPassword = (event: any) => {
+  formData.password = event.target.value;
+  validatePassword(formData.password, errorsFormData.password);
+};
+const onBlurPassword = (event: any) => {
+  formData.password = event.target.value;
+};
+
+const onSubmit = () => {
+  errorsFormData.email.isDirty = true;
+  errorsFormData.password.isDirty = true;
+
+  validateEmail(formData.email, errorsFormData.email);
+  validatePassword(formData.password, errorsFormData.password);
+
+  const hasErrors = Object.values(errorsFormData).some((errorObject) => errorObject.errors.length > 0);
+
+  if (hasErrors) return;
+
+  console.log(formData.email, "email");
+  console.log(formData.password, "pass");
 };
 </script>
 
