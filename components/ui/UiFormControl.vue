@@ -1,14 +1,13 @@
 <template>
   <div class="ui-form-control">
-    <div class="ui-form-control__label"
-          :class="{'d-hide': label.length === 0}"
+    <div
+      class="ui-form-control__label"
+      :class="{ 'd-hide': label.length === 0 }"
     >
       {{ props.label }}
     </div>
-    <slot/>
-    <span class="small text-danger"
-          v-for="error in props.errors"
-    >
+    <slot />
+    <span class="small text-danger" v-for="error in props.errors">
       {{ error }}
     </span>
   </div>
@@ -18,12 +17,12 @@
 const props = defineProps({
   label: {
     type: String,
-    default: ""
+    default: "",
   },
   errors: {
     type: Array<string>,
-    default: []
-  }
+    default: [],
+  },
 });
 </script>
 
