@@ -1,11 +1,7 @@
 <template>
   <div class="login-form">
     <UiTextH2 class="mb-1 text-center">LOGIN</UiTextH2>
-    <UiFormControl
-      class="mb-1"
-      label="Email"
-      :errors="props.errorsFormData.email.errors"
-    >
+    <UiFormControl class="mb-1" label="Email" :errors="props.errorsFormData.email.errors">
       <UiInput
         type="text"
         placeholder="example@test.com"
@@ -58,6 +54,7 @@ const onInputEmail = (event: any) => {
 };
 const onBlurEmail = (event: any) => {
   formData.email = event.target.value;
+  validateEmail(formData.email, errorsFormData.email);
 };
 
 const onFocusPassword = (event: any) => {
@@ -70,18 +67,30 @@ const onInputPassword = (event: any) => {
 };
 const onBlurPassword = (event: any) => {
   formData.password = event.target.value;
+  validatePassword(formData.password, errorsFormData.password);
 };
 
-const onSubmit = () => {
+const doValidateForm = () => {
   errorsFormData.email.isDirty = true;
   errorsFormData.password.isDirty = true;
 
   validateEmail(formData.email, errorsFormData.email);
   validatePassword(formData.password, errorsFormData.password);
+};
 
-  const hasErrors = Object.values(errorsFormData).some((errorObject) => errorObject.errors.length > 0);
+const isFormValid = () => {
+  return Object.values(errorsFormData).some((errorObject) => errorObject.errors.length);
+};
 
-  if (hasErrors) return;
+const doSendForm = () => {
+  // code...
+};
+
+const onSubmit = () => {
+  doValidateForm();
+  if (isFormValid()) {
+    doSendForm();
+  }
 
   console.log(formData.email, "email");
   console.log(formData.password, "pass");
