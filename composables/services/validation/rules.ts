@@ -15,3 +15,7 @@ export const maxValue = (value: any, maxValue: any): Boolean => {
 export const minValue = (value: any, minValue: any): Boolean => {
   return value.length < minValue;
 };
+
+export const confirmPassword = (value: any, password: any): Boolean => {
+  return value != password;
+};
