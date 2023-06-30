@@ -9,17 +9,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import CardDefault from "~/components/block/card/CardDefault.vue";
 import { fakeItems } from "~/utils/fakeData/items";
 
-export default defineComponent({
-  name: "Index",
-  components: { CardDefault },
-  data() {
-    return {
-      items: fakeItems,
-    };
-  },
-});
+const items = fakeItems;
 </script>

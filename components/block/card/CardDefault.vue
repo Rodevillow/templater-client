@@ -18,8 +18,6 @@
 <script lang="ts" setup>
 import TheSlider from "../slider/TheSlider.vue";
 
-const components = defineComponent({ TheSlider });
-
 const props = defineProps({
   title: {
     type: String,
