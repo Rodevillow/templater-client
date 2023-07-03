@@ -1,4 +1,9 @@
-import { isRequired, isEmail, maxValue, minValue } from "~/composables/services/validation/rules";
+import {
+  isRequired,
+  isEmail,
+  maxValue,
+  minValue,
+} from "~/composables/services/validation/rules";
 
 export const validateEmail = (value: any, errorObject: any) => {
   errorObject.errors = [];
@@ -30,12 +35,16 @@ export const validatePassword = (value: any, errorObject: any) => {
   }
 
   if (maxValue(clearValue, 50)) {
-    errorObject.errors.push("Password should not be longer than 50 characters!");
+    errorObject.errors.push(
+      "Password should not be longer than 50 characters!"
+    );
     return;
   }
 
   if (minValue(clearValue, 6)) {
-    errorObject.errors.push("Password should not be longer less than 6 characters!");
+    errorObject.errors.push(
+      "Password should not be longer less than 6 characters!"
+    );
     return;
   }
 };

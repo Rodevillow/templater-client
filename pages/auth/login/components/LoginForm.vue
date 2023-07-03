@@ -1,7 +1,11 @@
 <template>
   <div class="login-form">
     <UiTextH2 class="mb-1 text-center">LOGIN</UiTextH2>
-    <UiFormControl class="mb-1" label="Email" :errors="props.errorsFormData.email.errors">
+    <UiFormControl
+      class="mb-1"
+      label="Email"
+      :errors="props.errorsFormData.email.errors"
+    >
       <UiInput
         type="text"
         placeholder="example@test.com"
@@ -11,7 +15,11 @@
         @blur="onBlurEmail"
       />
     </UiFormControl>
-    <UiFormControl class="mb-3" label="Password" :errors="props.errorsFormData.password.errors">
+    <UiFormControl
+      class="mb-3"
+      label="Password"
+      :errors="props.errorsFormData.password.errors"
+    >
       <UiInput
         type="password"
         placeholder="********"
@@ -21,7 +29,9 @@
         @blur="onBlurPassword"
       />
     </UiFormControl>
-    <UiButtonPrimary @click="onSubmit" type="submit" class="w-100">LOGIN</UiButtonPrimary>
+    <UiButtonPrimary @click="onSubmit" type="submit" class="w-100"
+      >LOGIN</UiButtonPrimary
+    >
 
     <div class="mt-2 text-center">
       <nuxt-link to="/auth/forgot">Forgot password?</nuxt-link>
@@ -31,7 +41,10 @@
 
 <script lang="ts" setup>
 import { errorsFormData, formData } from "../composables";
-import { validateEmail, validatePassword } from "@/pages/auth/login/composables/validation";
+import {
+  validateEmail,
+  validatePassword,
+} from "@/pages/auth/login/composables/validation";
 
 const props = defineProps({
   formData: {
@@ -79,7 +92,9 @@ const doValidateForm = () => {
 };
 
 const isFormValid = () => {
-  return Object.values(errorsFormData).some((errorObject) => errorObject.errors.length);
+  return Object.values(errorsFormData).some(
+    (errorObject) => errorObject.errors.length
+  );
 };
 
 const doSendForm = () => {
