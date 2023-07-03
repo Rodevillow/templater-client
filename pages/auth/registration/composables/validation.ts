@@ -28,21 +28,21 @@ export const validateEmail = (value: String, errorObject: any) => {
 
 export const validatePassword = (value: String, errorObject: any) => {
   errorObject.errors = [];
-  const clearPassword = value.trim();
+  const clearValue = value.trim();
 
-  if (isRequired(clearPassword)) {
+  if (isRequired(clearValue)) {
     errorObject.errors.push("Password field is required!");
     return;
   }
 
-  if (maxValue(clearPassword, 50)) {
+  if (maxValue(clearValue, 50)) {
     errorObject.errors.push(
       "Password should not be longer than 50 characters!"
     );
     return;
   }
 
-  if (minValue(clearPassword, 6)) {
+  if (minValue(clearValue, 6)) {
     errorObject.errors.push(
       "Password should not be longer less than 6 characters!"
     );
@@ -56,15 +56,45 @@ export const validateConfirmPassword = (
   password: String
 ) => {
   errorObject.errors = [];
-  const clearConfirmPassword = value.trim();
+  const clearValue = value.trim();
 
-  if (isRequired(clearConfirmPassword)) {
-    errorObject.errors.push("Email field is required!");
-    return;
-  }
-
-  if (confirmPassword(clearConfirmPassword, password)) {
-    errorObject.errors.push("Password must match the password field!");
+  if (
+    isRequired(clearValue) || 
+    confirmPassword(clearValue, password)
+  ) {
+    errorObject.errors.push("Confirm password must match the \"Password\" field!");
     return;
   }
 };
+
+// --- --- ---
+
+import { errorsFormData, formData } from "../composables";
+
+export const onFocusEmail = (event: any) => { formData.email = event.target.value; errorsFormData.email.isDirty = true; };
+export const onInputEmail = (event: any) => validateEmail(formData.email = event.target.value, errorsFormData.email);
+export const onBlurEmail = (event: any) => validateEmail(formData.email = event.target.value, errorsFormData.email);
+
+export const onFocusPassword = (event: any) => { formData.password = event.target.value; errorsFormData.password.isDirty = true; };
+export const onInputPassword = (event: any) => validatePassword(formData.password = event.target.value, errorsFormData.password);
+export const onBlurPassword = (event: any) => validatePassword(formData.password = event.target.value, errorsFormData.password);
+
+export const onFocusConfirmPassword = (event: any) => { formData.confirmPassword = event.target.value; errorsFormData.confirmPassword.isDirty = true; };
+export const onInputConfirmPassword = (event: any) => validateConfirmPassword(formData.confirmPassword = event.target.value, errorsFormData.confirmPassword, formData.password);
+export const onBlurConfirmPassword = (event: any) => validateConfirmPassword(formData.confirmPassword = event.target.value, errorsFormData.confirmPassword, formData.password);
+
+export const doValidateForm = () => {
+  errorsFormData.email.isDirty = true;
+  errorsFormData.password.isDirty = true;
+  errorsFormData.confirmPassword.isDirty = true;
+
+  validateEmail(formData.email, errorsFormData.email);
+  validatePassword(formData.password, errorsFormData.password);
+  validateConfirmPassword(formData.confirmPassword, errorsFormData.confirmPassword, formData.password);
+};
+
+export const isFormValid = () => !Object.values(errorsFormData).some(
+  (errorObject) => errorObject.isDirty && errorObject.errors.length > 0
+);
+
+export const validateRegistrationForm = (doSendFormCallback: any) => { doValidateForm(); isFormValid() && doSendFormCallback(); }

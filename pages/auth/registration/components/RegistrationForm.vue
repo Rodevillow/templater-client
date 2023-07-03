@@ -1,6 +1,7 @@
 <template>
   <div>
     <UiTextH2 class="mb-1 text-center">REGISTRATION</UiTextH2>
+    
     <UiFormControl
       class="mb-1"
       label="Email"
@@ -15,6 +16,7 @@
         @blur="onBlurEmail"
       />
     </UiFormControl>
+
     <UiFormControl
       class="mb-1"
       label="Password"
@@ -29,6 +31,7 @@
         @blur="onBlurPassword"
       />
     </UiFormControl>
+
     <UiFormControl
       class="mb-3"
       label="Confirm password"
@@ -43,16 +46,28 @@
         @blur="onBlurConfirmPassword"
       />
     </UiFormControl>
-    <UiButtonPrimary class="w-100">REGISTRATION</UiButtonPrimary>
+
+    <UiButtonPrimary 
+      class="w-100" 
+      @click="validateRegistrationForm(doSendForm)"
+    >
+      REGISTRATION
+    </UiButtonPrimary>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { errorsFormData, formData } from "../composables";
-import {
-  validateEmail,
-  validatePassword,
-  validateConfirmPassword,
+import { 
+  onFocusEmail, 
+  onInputEmail, 
+  onBlurEmail, 
+  onFocusPassword,
+  onInputPassword,
+  onBlurPassword,
+  onFocusConfirmPassword,
+  onInputConfirmPassword,
+  onBlurConfirmPassword,
+  validateRegistrationForm 
 } from "@/pages/auth/registration/composables/validation";
 
 const props = defineProps({
@@ -66,52 +81,10 @@ const props = defineProps({
   },
 });
 
-const onFocusEmail = (event: any) => {
-  formData.email = event.target.value;
-  errorsFormData.email.isDirty = true;
-};
-const onInputEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-const onBlurEmail = (event: any) => {
-  formData.email = event.target.value;
-};
-
-const onFocusPassword = (event: any) => {
-  formData.password = event.target.value.replace(/\D/, "");
-  console.log("golova");
-  errorsFormData.password.isDirty = true;
-};
-
-const onInputPassword = (event: any) => {
-  formData.password = event.target.value;
-  console.log(event.target.value);
-  validatePassword(formData.password, errorsFormData.password);
-};
-
-const onBlurPassword = (event: any) => {
-  formData.password = event.target.value;
-};
-
-const onFocusConfirmPassword = (event: any) => {
-  formData.confirmPassword = event.target.value.replace(/\D/, "");
-  console.log("golova");
-  errorsFormData.password.isDirty = true;
-};
-
-const onInputConfirmPassword = (event: any) => {
-  formData.confirmPassword = event.target.value;
-  console.log(event.target.value);
-  validateConfirmPassword(
-    formData.confirmPassword,
-    errorsFormData.confirmPassword,
-    formData.password
-  );
-};
-
-const onBlurConfirmPassword = (event: any) => {
-  formData.confirmPassword = event.target.value;
+const doSendForm = (): void => {
+  console.log('--- --- --- --- --- --- --- >');
+  console.log('RegistrationForm is valid!');
+  console.log('--- --- --- --- --- --- --- >');
 };
 </script>
 

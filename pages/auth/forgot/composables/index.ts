@@ -1,6 +1,5 @@
 export const formData = reactive({
   email: "",
-  password: "",
 });
 
 const defaultErrorObject = {
@@ -10,5 +9,4 @@ const defaultErrorObject = {
 
 export const errorsFormData = reactive({
   email: { ...defaultErrorObject },
-  password: { ...defaultErrorObject },
 });

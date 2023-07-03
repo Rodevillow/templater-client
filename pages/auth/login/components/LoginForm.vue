@@ -1,6 +1,7 @@
 <template>
   <div class="login-form">
     <UiTextH2 class="mb-1 text-center">LOGIN</UiTextH2>
+    
     <UiFormControl
       class="mb-1"
       label="Email"
@@ -15,6 +16,7 @@
         @blur="onBlurEmail"
       />
     </UiFormControl>
+
     <UiFormControl
       class="mb-3"
       label="Password"
@@ -29,9 +31,14 @@
         @blur="onBlurPassword"
       />
     </UiFormControl>
-    <UiButtonPrimary @click="onSubmit" type="submit" class="w-100"
-      >LOGIN</UiButtonPrimary
+    
+    <UiButtonPrimary 
+      type="submit"
+      class="w-100" 
+      @click="validateLoginForm(doSendForm)" 
     >
+      LOGIN
+    </UiButtonPrimary>
 
     <div class="mt-2 text-center">
       <nuxt-link to="/auth/forgot">Forgot password?</nuxt-link>
@@ -40,10 +47,14 @@
 </template>
 
 <script lang="ts" setup>
-import { errorsFormData, formData } from "../composables";
-import {
-  validateEmail,
-  validatePassword,
+import { 
+  onFocusEmail, 
+  onInputEmail, 
+  onBlurEmail, 
+  onFocusPassword,
+  onInputPassword,
+  onBlurPassword,
+  validateLoginForm 
 } from "@/pages/auth/login/composables/validation";
 
 const props = defineProps({
@@ -57,58 +68,10 @@ const props = defineProps({
   },
 });
 
-const onFocusEmail = (event: any) => {
-  formData.email = event.target.value;
-  errorsFormData.email.isDirty = true;
-};
-const onInputEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-const onBlurEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-
-const onFocusPassword = (event: any) => {
-  formData.password = event.target.value;
-  errorsFormData.password.isDirty = true;
-};
-const onInputPassword = (event: any) => {
-  formData.password = event.target.value;
-  validatePassword(formData.password, errorsFormData.password);
-};
-const onBlurPassword = (event: any) => {
-  formData.password = event.target.value;
-  validatePassword(formData.password, errorsFormData.password);
-};
-
-const doValidateForm = () => {
-  errorsFormData.email.isDirty = true;
-  errorsFormData.password.isDirty = true;
-
-  validateEmail(formData.email, errorsFormData.email);
-  validatePassword(formData.password, errorsFormData.password);
-};
-
-const isFormValid = () => {
-  return Object.values(errorsFormData).some(
-    (errorObject) => errorObject.errors.length
-  );
-};
-
 const doSendForm = () => {
-  // code...
-};
-
-const onSubmit = () => {
-  doValidateForm();
-  if (isFormValid()) {
-    doSendForm();
-  }
-
-  console.log(formData.email, "email");
-  console.log(formData.password, "pass");
+  console.log('--- --- --- --- --- --- --- >');
+  console.log('LoginForm is valid!');
+  console.log('--- --- --- --- --- --- --- >');
 };
 </script>
 
