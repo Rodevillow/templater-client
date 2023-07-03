@@ -48,3 +48,30 @@ export const validatePassword = (value: any, errorObject: any) => {
     return;
   }
 };
+
+// --- --- ---
+
+import { errorsFormData, formData } from "../composables";
+
+export const onFocusEmail = (event: any) => { formData.email = event.target.value; errorsFormData.email.isDirty = true; };
+export const onInputEmail = (event: any) => validateEmail(formData.email = event.target.value, errorsFormData.email);
+export const onBlurEmail = (event: any) => validateEmail(formData.email = event.target.value, errorsFormData.email);
+
+export const onFocusPassword = (event: any) => { formData.password = event.target.value; errorsFormData.password.isDirty = true; };
+export const onInputPassword = (event: any) => validatePassword(formData.password = event.target.value, errorsFormData.password);
+export const onBlurPassword = (event: any) => validatePassword(formData.password = event.target.value, errorsFormData.password);
+
+export const doValidateForm = () => {
+  errorsFormData.email.isDirty = true;
+  errorsFormData.password.isDirty = true;
+
+  validateEmail(formData.email, errorsFormData.email);
+  validatePassword(formData.password, errorsFormData.password);
+};
+
+export const isFormValid = () => !Object.values(errorsFormData).some(
+  (errorObject) => errorObject.isDirty && errorObject.errors.length > 0
+);
+
+export const validateLoginForm = (doSendFormCallback: any) => { doValidateForm(); isFormValid() && doSendFormCallback(); }
+

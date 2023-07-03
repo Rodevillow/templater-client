@@ -1,6 +1,7 @@
 <template>
   <div>
     <UiTextH2 class="mb-1 text-center">FORGOT PASSWORD</UiTextH2>
+    
     <UiFormControl
       class="mb-3"
       label="Email"
@@ -16,13 +17,23 @@
         @blur="onBlurEmail"
       />
     </UiFormControl>
-    <UiButtonPrimary class="w-100">SEND RESET LINK</UiButtonPrimary>
+
+    <UiButtonPrimary 
+      class="w-100" 
+      @click="validateForgotPasswordForm(doSendForm)"
+    >
+      SEND RESET LINK
+    </UiButtonPrimary>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { errorsFormData, formData } from "../composables";
-import { validateEmail } from "@/pages/auth/login/composables/validation";
+import { 
+  onFocusEmail, 
+  onInputEmail, 
+  onBlurEmail, 
+  validateForgotPasswordForm 
+} from "@/pages/auth/forgot/composables/validation";
 
 const props = defineProps({
   formData: {
@@ -35,16 +46,10 @@ const props = defineProps({
   },
 });
 
-const onFocusEmail = (event: any) => {
-  formData.email = event.target.value;
-  errorsFormData.email.isDirty = true;
-};
-const onInputEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-const onBlurEmail = (event: any) => {
-  formData.email = event.target.value;
+const doSendForm = () => {
+  console.log('--- --- --- --- --- --- --- >');
+  console.log('ForgotForm is valid!');
+  console.log('--- --- --- --- --- --- --- >');
 };
 </script>
 
