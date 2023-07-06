@@ -1,11 +1,11 @@
 <template>
-    <div>ORDERS</div>
+  <div>ORDERS</div>
 </template>
 
 <script lang="ts" setup>
-
+definePageMeta({
+  layout: "main",
+});
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

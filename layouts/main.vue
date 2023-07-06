@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <TheHeader />
-    <!-- TODO :: HERE WILL BE ADDED SIDEBAR COMPONENT -->
+    <BlockTheClientSidebar />
     <div class="page h-100">
       <slot />
     </div>

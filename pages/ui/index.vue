@@ -8,6 +8,12 @@
         <UiButtonSuccess>ButtonSuccess</UiButtonSuccess>
         <UiButtonSecondary>UiButtonSecondary</UiButtonSecondary>
         <UiButtonDisabled>UiButtonDisabled</UiButtonDisabled>
+        <UiSidebarItem>
+          <template #icon-left>
+            <UiIconProfile />
+          </template>
+          <template #default> Profile </template>
+        </UiSidebarItem>
       </div>
       <div class="col-10">
         <h3>Fonts</h3>
@@ -16,10 +22,9 @@
         <UiTextH3>Default text - H3</UiTextH3>
         <UiTextSmall>Small text - Paragraph</UiTextSmall>
         <ui-default-text
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ipsa,
-          quaerat iste suscipit, harum nostrum quisquam, dolore perferendis
-          necessitatibus quos eum. Vel tenetur ipsa, veritatis reprehenderit hic
-          deleniti quae molestias!</ui-default-text
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ipsa, quaerat iste suscipit, harum nostrum quisquam,
+          dolore perferendis necessitatibus quos eum. Vel tenetur ipsa, veritatis reprehenderit hic deleniti quae
+          molestias!</ui-default-text
         >
       </div>
       <div class="d-flex flex-column gap-3 col-6">
@@ -30,8 +35,7 @@
 
       <div class="d-flex flex-column gap-3 col-12">
         <h3>Block components</h3>
-        <TheHeader />
-        <TheFooter />
+        <BlockTheClientSidebar />
       </div>
 
       <div class="d-flex flex-column gap-3 col-6 mb-2">
@@ -47,11 +51,16 @@
         <UiIconBurger />
         <UiIconGoogle />
         <UiIconFacebook />
+        <UiIconUpload />
+        <UiIconSearch />
+        <UiIconProfile />
+        <UiIconEyeFill />
+        <UiIconGear />
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts"></script>
 
 <style lang="scss" scoped></style>
