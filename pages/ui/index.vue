@@ -1,7 +1,8 @@
 <template>
-  <h1>Ui elements</h1>
   <div class="container">
     <div class="row gap-5">
+      <h1 class="text-center mt-4">Welcome to Templater</h1>
+      <h2 class="text-center mt-2">Ui elements</h2>
       <div class="d-flex flex-column gap-3 col-2">
         <h3>Buttons</h3>
         <UiButtonPrimary>ButtonPrimary</UiButtonPrimary>

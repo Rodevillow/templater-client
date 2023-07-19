@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer mb-1 rounded">
     <UiTextH1>TEMPLATER</UiTextH1>
     <UiTextSmall>Ukraine 2023</UiTextSmall>
   </footer>

@@ -1,95 +1,68 @@
 <template>
   <div class="login-form">
     <UiTextH2 class="mb-1 text-center">LOGIN</UiTextH2>
+    
     <UiFormControl
       class="mb-1"
       label="Email"
-      :errors="props.errorsFormData.email.errors"
+      :errors="validatorLoginForm?.errorsFormData?.email?.errors"
     >
       <UiInput
         type="text"
         placeholder="example@test.com"
+        @input="validatorLoginForm?.doValidateField('email', $event.target.value)"
+        @blur="validatorLoginForm?.doValidateField('email', $event.target.value)"
         :value="props.formData.email"
-        @focus="onFocusEmail"
-        @input="onInputEmail"
-        @blur="onBlurEmail"
+        :isDirty="validatorLoginForm?.errorsFormData?.email?.isDirty"
+        :isInvalid="validatorLoginForm?.errorsFormData?.email?.errors?.length > 0"
       />
     </UiFormControl>
-    <UiFormControl class="mb-3" label="Password" :errors="props.errorsFormData.password.errors">
+
+    <UiFormControl
+      class="mb-3"
+      label="Password"
+      :errors="validatorLoginForm?.errorsFormData?.password?.errors"
+    >
       <UiInput
         type="password"
         placeholder="********"
+        @input="validatorLoginForm?.doValidateField('password', $event.target.value)"
+        @blur="validatorLoginForm?.doValidateField('password', $event.target.value)"
         :value="props.formData.password"
-        @focus="onFocusPassword"
-        @input="onInputPassword"
-        @blur="onBlurPassword"
+        :isDirty="validatorLoginForm?.errorsFormData?.password?.isDirty"
+        :isInvalid="validatorLoginForm?.errorsFormData?.password?.errors?.length > 0"
       />
     </UiFormControl>
-    <UiButtonPrimary @click="onSubmit" type="submit" class="w-100">LOGIN</UiButtonPrimary>
+    
+    <UiButtonPrimary 
+      type="submit"
+      class="w-100" 
+      @click="validateLoginForm(doSendForm)"
+      :isLoading="isLoading"
+    >LOGIN</UiButtonPrimary>
 
     <div class="mt-2 text-center">
       <nuxt-link to="/auth/forgot">Forgot password?</nuxt-link>
     </div>
+
   </div>
 </template>
 
 <script lang="ts" setup>
-import { errorsFormData, formData } from "../composables";
-import { validateEmail, validatePassword } from "@/pages/auth/login/composables/validation";
+import { validateLoginForm, validatorLoginForm } from "@/pages/auth/login/composables/validation";
 
-const props = defineProps({
-  formData: {
-    type: Object,
-    required: true,
-  },
-  errorsFormData: {
-    type: Object,
-    required: true,
-  },
-});
+const props = defineProps({formData: { type: Object, required: true }});
+const isLoading = ref(false);
 
-const onFocusEmail = (event: any) => {
-  formData.email = event.target.value;
-  errorsFormData.email.isDirty = true;
-};
-const onInputEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-const onBlurEmail = (event: any) => {
-  formData.email = event.target.value;
-};
-
-const onFocusPassword = (event: any) => {
-  formData.password = event.target.value;
-  errorsFormData.password.isDirty = true;
-};
-const onInputPassword = (event: any) => {
-  formData.password = event.target.value;
-  validatePassword(formData.password, errorsFormData.password);
-};
-const onBlurPassword = (event: any) => {
-  formData.password = event.target.value;
-};
-
-const onSubmit = () => {
-  errorsFormData.email.isDirty = true;
-  errorsFormData.password.isDirty = true;
-
-  validateEmail(formData.email, errorsFormData.email);
-  validatePassword(formData.password, errorsFormData.password);
-
-  const hasErrors = Object.values(errorsFormData).some((errorObject) => errorObject.errors.length > 0);
-
-  if (hasErrors) return;
-
-  console.log(formData.email, "email");
-  console.log(formData.password, "pass");
+const doSendForm = () => {
+  try {
+    isLoading.value = true;
+  } catch (e:any) {
+    console.log('LoginForm -> doSendForm -> catch', e.response);
+  } finally {
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 1000);
+  }
 };
 </script>
-
-<style lang="scss" scoped>
-.login-form {
-  //...
-}
-</style>

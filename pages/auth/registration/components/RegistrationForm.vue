@@ -1,118 +1,86 @@
 <template>
   <div>
     <UiTextH2 class="mb-1 text-center">REGISTRATION</UiTextH2>
+    
     <UiFormControl
       class="mb-1"
       label="Email"
-      :errors="props.errorsFormData.email.errors"
+      :errors="validatorRegistrationForm?.errorsFormData?.email?.errors"
     >
       <UiInput
         type="text"
         placeholder="example@test.com"
         :value="props.formData.email"
-        @focus="onFocusEmail"
-        @input="onInputEmail"
-        @blur="onBlurEmail"
+        @input="validatorRegistrationForm?.doValidateField('email', $event.target.value)"
+        @blur="validatorRegistrationForm?.doValidateField('email', $event.target.value)"
+        :isDirty="validatorRegistrationForm?.errorsFormData?.email?.isDirty"
+        :isInvalid="validatorRegistrationForm?.errorsFormData?.email?.errors?.length > 0"
       />
     </UiFormControl>
+
     <UiFormControl
       class="mb-1"
       label="Password"
-      :errors="props.errorsFormData.password.errors"
+      :errors="validatorRegistrationForm?.errorsFormData?.password.errors"
     >
       <UiInput
         type="password"
         placeholder="********"
+        @input="validatorRegistrationForm?.doValidateField('password', $event.target.value)"
+        @blur="validatorRegistrationForm?.doValidateField('password', $event.target.value)"
         :value="props.formData.password"
-        @focus="onFocusPassword"
-        @input="onInputPassword"
-        @blur="onBlurPassword"
+        :isDirty="validatorRegistrationForm?.errorsFormData?.password?.isDirty"
+        :isInvalid="validatorRegistrationForm?.errorsFormData?.password?.errors?.length > 0"
       />
     </UiFormControl>
+
     <UiFormControl
       class="mb-3"
       label="Confirm password"
-      :errors="props.errorsFormData.confirmPassword.errors"
+      :errors="validatorRegistrationForm?.errorsFormData?.confirmPassword.errors"
     >
       <UiInput
         type="password"
         placeholder="********"
+        @input="validatorRegistrationForm?.doValidateField('confirmPassword', $event.target.value)"
+        @blur="validatorRegistrationForm?.doValidateField('confirmPassword', $event.target.value)"
         :value="props.formData.confirmPassword"
-        @focus="onFocusConfirmPassword"
-        @input="onInputConfirmPassword"
-        @blur="onBlurConfirmPassword"
+        :isDirty="validatorRegistrationForm?.errorsFormData?.confirmPassword?.isDirty"
+        :isInvalid="validatorRegistrationForm?.errorsFormData?.confirmPassword?.errors?.length > 0"
       />
     </UiFormControl>
-    <UiButtonPrimary class="w-100">REGISTRATION</UiButtonPrimary>
+
+    <UiButtonPrimary 
+      class="w-100" 
+      @click="validateRegistrationForm(doSendForm)"
+      :isLoading="isLoading"
+    >
+      REGISTRATION
+    </UiButtonPrimary>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { errorsFormData, formData } from "../composables";
-import {
-  validateEmail,
-  validatePassword,
-  validateConfirmPassword,
-} from "@/pages/auth/registration/composables/validation";
+import { validateRegistrationForm, validatorRegistrationForm } from "../composables/validation";
+// import { serverSideErrorsHandler } from "@/utils/validation/server-side-errors-handler.helper";
 
-const props = defineProps({
-  formData: {
-    type: Object,
-    required: true,
-  },
-  errorsFormData: {
-    type: Object,
-    required: true,
-  },
-});
+const props = defineProps({ formData: { type: Object, required: true }});
 
-const onFocusEmail = (event: any) => {
-  formData.email = event.target.value;
-  errorsFormData.email.isDirty = true;
-};
-const onInputEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-const onBlurEmail = (event: any) => {
-  formData.email = event.target.value;
-};
+const isLoading = ref(false);
+const appCore = useAppCore();
 
-const onFocusPassword = (event: any) => {
-  formData.password = event.target.value.replace(/\D/, "");
-  console.log("golova");
-  errorsFormData.password.isDirty = true;
-};
-
-const onInputPassword = (event: any) => {
-  formData.password = event.target.value;
-  console.log(event.target.value);
-  validatePassword(formData.password, errorsFormData.password);
-};
-
-const onBlurPassword = (event: any) => {
-  formData.password = event.target.value;
-};
-
-const onFocusConfirmPassword = (event: any) => {
-  formData.confirmPassword = event.target.value.replace(/\D/, "");
-  console.log("golova");
-  errorsFormData.password.isDirty = true;
-};
-
-const onInputConfirmPassword = (event: any) => {
-  formData.confirmPassword = event.target.value;
-  console.log(event.target.value);
-  validateConfirmPassword(
-    formData.confirmPassword,
-    errorsFormData.confirmPassword,
-    formData.password
-  );
-};
-
-const onBlurConfirmPassword = (event: any) => {
-  formData.confirmPassword = event.target.value;
-};
+const doSendForm = async (): Promise<void> => {
+  isLoading.value = true;
+  
+  try {
+    await appCore.auth.doRegistration(props.formData);
+    useRouter().push({path: '/auth/login'});
+  } catch (e:any) {
+    const serverValidationErrors = e?.response?.data?.description;
+    console.log('CATCH: ', serverValidationErrors);
+    // if (serverValidationErrors) serverSideErrorsHandler(serverValidationErrors);
+  } finally {
+      isLoading.value = false;
+  }
+}
 </script>
-
-<style lang="scss" scroped></style>

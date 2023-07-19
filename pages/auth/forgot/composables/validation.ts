@@ -1,8 +1,12 @@
-export const validateEmail = (value: any, errorObject: any) => {
-  errorObject.errors = [];
-  const clearValue = value.trim();
+import useValidation from "@/composables/useValidation";
 
-  if (clearValue.length === 0) {
-    errorObject.errors.push("Email field is required!");
-  }
-};
+import { formData } from "../composables";
+
+export const validatorForgotForm:any = useValidation(formData, {
+  email: [
+    "required", 
+    "isEmail"
+  ]
+});
+
+export const validateForgotForm:any = (doSendFormCallback: any): void => validatorForgotForm.doValidate() ? doSendFormCallback() : null;

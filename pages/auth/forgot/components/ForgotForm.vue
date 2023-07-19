@@ -1,50 +1,54 @@
 <template>
   <div>
     <UiTextH2 class="mb-1 text-center">FORGOT PASSWORD</UiTextH2>
+    
     <UiFormControl
       class="mb-3"
       label="Email"
-      :errors="props.errorsFormData.email.errors"
+      :errors="validatorForgotForm?.errorsFormData?.email?.errors"
     >
       <UiInput
         type="text"
         label="Email"
         placeholder="example@test.com"
+        @input="validatorForgotForm?.doValidateField('email', $event.target.value)"
+        @blur="validatorForgotForm?.doValidateField('email', $event.target.value)"
         :value="props.formData.email"
-        @focus="onFocusEmail"
-        @input="onInputEmail"
-        @blur="onBlurEmail"
+        :isDirty="validatorForgotForm?.errorsFormData?.email?.isDirty"
+        :isInvalid="validatorForgotForm?.errorsFormData?.email?.errors?.length > 0"
       />
     </UiFormControl>
-    <UiButtonPrimary class="w-100">SEND RESET LINK</UiButtonPrimary>
+
+    <UiButtonPrimary 
+      class="w-100"
+      @click="validateForgotForm(doSendForm)"
+      :isLoading="isLoading"
+    >SEND RESET LINK</UiButtonPrimary>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { errorsFormData, formData } from "../composables";
-import { validateEmail } from "@/pages/auth/login/composables/validation";
+import { validateForgotForm, validatorForgotForm } from '../composables/validation';
 
 const props = defineProps({
   formData: {
     type: Object,
     required: true,
-  },
-  errorsFormData: {
-    type: Object,
-    required: true,
-  },
+  }
 });
 
-const onFocusEmail = (event: any) => {
-  formData.email = event.target.value;
-  errorsFormData.email.isDirty = true;
-};
-const onInputEmail = (event: any) => {
-  formData.email = event.target.value;
-  validateEmail(formData.email, errorsFormData.email);
-};
-const onBlurEmail = (event: any) => {
-  formData.email = event.target.value;
+const isLoading = ref(false);
+
+const doSendForm = () => {
+  try {
+    isLoading.value = true;
+  } catch (e:any) {
+    console.log('ForgotForm -> doSendForm -> catch');
+  } finally {
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 1000);
+  }
 };
 </script>
 

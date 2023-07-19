@@ -1,34 +1,11 @@
-export const validateEmail = (value: String, errorObject: any) => {
-  errorObject.errors = [];
-  const clearValue = value.trim();
+import useValidation from "@/composables/useValidation";
 
-  if (clearValue.length === 0) {
-    errorObject.errors.push("Email field is required!");
-  }
-};
+import { formData } from "../composables";
 
-export const validatePassword = (value: String, errorObject: any) => {
-  errorObject.errors = [];
-  const clearPassword = value.trim();
+export const validatorRegistrationForm:any = useValidation(formData, {
+  email: ["required", "isEmail"],
+  password: ["required"],
+  confirmPassword: ["required"]
+});
 
-  if (clearPassword.length === 0) {
-    errorObject.errors.push("Password field is required!");
-  } else if (clearPassword.length < 6) {
-    errorObject.errors.push("Password must be longer than six characters");
-  }
-};
-
-export const validateConfirmPassword = (
-  value: String,
-  errorObject: any,
-  password: String
-) => {
-  errorObject.errors = [];
-  const clearConfirmPassword = value.trim();
-
-  if (clearConfirmPassword.length === 0) {
-    errorObject.errors.push("This field is required!");
-  } else if (clearConfirmPassword != password) {
-    errorObject.errors.push("Password must match the password field!");
-  }
-};
+export const validateRegistrationForm:any = (doSendFormCallback: any): void => validatorRegistrationForm.doValidate() && doSendFormCallback();
