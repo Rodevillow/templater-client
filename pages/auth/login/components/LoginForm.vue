@@ -5,78 +5,64 @@
     <UiFormControl
       class="mb-1"
       label="Email"
-      :errors="props.errorsFormData.email.errors"
+      :errors="validatorLoginForm?.errorsFormData?.email?.errors"
     >
       <UiInput
         type="text"
         placeholder="example@test.com"
+        @input="validatorLoginForm?.doValidateField('email', $event.target.value)"
+        @blur="validatorLoginForm?.doValidateField('email', $event.target.value)"
         :value="props.formData.email"
-        @focus="onFocusEmail"
-        @input="onInputEmail"
-        @blur="onBlurEmail"
+        :isDirty="validatorLoginForm?.errorsFormData?.email?.isDirty"
+        :isInvalid="validatorLoginForm?.errorsFormData?.email?.errors?.length > 0"
       />
     </UiFormControl>
 
     <UiFormControl
       class="mb-3"
       label="Password"
-      :errors="props.errorsFormData.password.errors"
+      :errors="validatorLoginForm?.errorsFormData?.password?.errors"
     >
       <UiInput
         type="password"
         placeholder="********"
+        @input="validatorLoginForm?.doValidateField('password', $event.target.value)"
+        @blur="validatorLoginForm?.doValidateField('password', $event.target.value)"
         :value="props.formData.password"
-        @focus="onFocusPassword"
-        @input="onInputPassword"
-        @blur="onBlurPassword"
+        :isDirty="validatorLoginForm?.errorsFormData?.password?.isDirty"
+        :isInvalid="validatorLoginForm?.errorsFormData?.password?.errors?.length > 0"
       />
     </UiFormControl>
     
     <UiButtonPrimary 
       type="submit"
       class="w-100" 
-      @click="validateLoginForm(doSendForm)" 
-    >
-      LOGIN
-    </UiButtonPrimary>
+      @click="validateLoginForm(doSendForm)"
+      :isLoading="isLoading"
+    >LOGIN</UiButtonPrimary>
 
     <div class="mt-2 text-center">
       <nuxt-link to="/auth/forgot">Forgot password?</nuxt-link>
     </div>
+
   </div>
 </template>
 
 <script lang="ts" setup>
-import { 
-  onFocusEmail, 
-  onInputEmail, 
-  onBlurEmail, 
-  onFocusPassword,
-  onInputPassword,
-  onBlurPassword,
-  validateLoginForm 
-} from "@/pages/auth/login/composables/validation";
+import { validateLoginForm, validatorLoginForm } from "@/pages/auth/login/composables/validation";
 
-const props = defineProps({
-  formData: {
-    type: Object,
-    required: true,
-  },
-  errorsFormData: {
-    type: Object,
-    required: true,
-  },
-});
+const props = defineProps({formData: { type: Object, required: true }});
+const isLoading = ref(false);
 
 const doSendForm = () => {
-  console.log('--- --- --- --- --- --- --- >');
-  console.log('LoginForm is valid!');
-  console.log('--- --- --- --- --- --- --- >');
+  try {
+    isLoading.value = true;
+  } catch (e:any) {
+    console.log('LoginForm -> doSendForm -> catch', e.response);
+  } finally {
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 1000);
+  }
 };
 </script>
-
-<style lang="scss" scoped>
-.login-form {
-  //...
-}
-</style>

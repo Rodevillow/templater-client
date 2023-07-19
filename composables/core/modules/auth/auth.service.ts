@@ -1,14 +1,19 @@
+import ApiUtil from "~/utils/api/api.util";
+
 export class AuthService {
-    async get() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve({ success: true, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" })
-            }, 3000);
-        })
+
+    private apiUtil:any
+
+    constructor() {
+        this.apiUtil = ApiUtil.getInstance();
     }
 
-    create() {
-        console.log('AuthService -> create');
+    async get(formData:Object): Promise<any> {
+        const response = await this.apiUtil.post('/auth/login', formData);
+    }
+
+    async create (formData:Object): Promise<any> {
+        const response = await this.apiUtil.post('/auth/register', formData);
     }
 
     update() {

@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <div class="card mb-3">
-      <the-slider></the-slider>
+  <div class="card rounded overflow-hidden border-none">
+    <TheSlider />
 
-      <div class="card__wrapper p-2">
-        <ui-text-h-2 class="mt-2">{{ props.title }}</ui-text-h-2>
-        <ui-default-text class="mt-1">{{ props.description }}</ui-default-text>
-        <div class="card__wrapper-link mt-2">
-          <a href="#"><ui-icon-chevron-heart style="width: 30px; height: 30px" /></a>
-          <a class="ml-2" href="#"><ui-icon-chevron-cart-empty style="width: 30px; height: 30px" /></a>
-        </div>
+    <div class="card__wrapper p-2">
+      <UiTextH2 class="mt-2">{{ props.title }}</UiTextH2>
+      <UiDefaultText class="mt-1">{{ props.description }}</UiDefaultText>
+
+      <div class="card__wrapper-link mt-2">
+        <UiIconChevronHeart />
+        <UiIconChevronCartEmpty class="ml-2" />
       </div>
+
     </div>
   </div>
 </template>

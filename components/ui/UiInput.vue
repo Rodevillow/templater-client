@@ -1,6 +1,10 @@
 <template>
   <input
     class="input"
+    :class="{ 
+      'is-invalid': isDirty && isInvalid, 
+      'is-valid': isDirty && !isInvalid 
+    }"
     :type="props.type"
     :placeholder="props.placeholder"
     :value="props.value"
@@ -24,6 +28,19 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  // Deperecated
+  errorObject: {
+    type: Object,
+    default: {}
+  },
+  isDirty: {
+    type: Boolean,
+    default: false
+  },
+  isInvalid: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const emit = defineEmits(["focus", "input", "blur"]);
@@ -59,5 +76,13 @@ const onBlur = (event: any) => emit("blur", event);
     line-height: 17px;
     letter-spacing: 0em;
   }
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.is-valid {
+  border-color: green;
 }
 </style>

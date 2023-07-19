@@ -1,61 +1,49 @@
 <template>
-  <div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="0"
-        class="dots active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        class="dots"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        class="dots"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAACVBMVEVEfqFGfaNEf6DWZHiaAAAASUlEQVR4nO3BAQEAAAiAIOv/6IYENG0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAawcWRgAE9y5z2wAAAABJRU5ErkJggg=="
-          class="d-block w-100"
-          alt="..."
-        />
-      </div>
-      <div class="carousel-item">
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEVgtONWBy6EAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="
-          class="d-block w-100"
-          alt="..."
-        />
-      </div>
-      <div class="carousel-item">
-        <img
-          src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkFBgoFBQYGBQ8ICRAKFBEWFhQRExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKBQ0NDgUPDisZExkrLSsrKysrKysrKysrLSsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAAABP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKMApSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q=="
-          class="d-block w-100"
-          alt="..."
-        />
-      </div>
-    </div>
-  </div>
+  <UiImage :src="images[0].src" :id="images[0].id" />
 </template>
+
+<script lang="ts" setup>
+const props = defineProps({
+  images: {
+    type: Array<any>,
+    default: [
+      {
+        id: '10da97ee-9b49-44c2-8097-f7bb63dd3991',
+        alt: "Image 1",
+        src: "https://cdn.pixabay.com/photo/2023/05/31/14/20/mountains-8031511_1280.jpg"
+      },
+      {
+        id: '905bec78-fcc5-45d7-9de9-08c2f1cead4a',
+        alt: "Image 2",
+        src: "https://cdn.pixabay.com/photo/2023/05/30/15/36/pigeon-8028951_1280.jpg"
+      },
+      {
+        id: 'c244e49e-ef40-4b93-8604-eca0d9615e5b',
+        alt: "Image 3",
+        src: "https://cdn.pixabay.com/photo/2023/06/07/04/23/road-8046167_1280.jpg"
+      }
+    ]
+  }
+});
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/variables";
-.dots {
-  width: 20px;
-  height: 3px;
-  border-radius: 100%;
-  background: $background-color;
+
+.carousel-indicator {
+  position: relative;
+
+  &s {
+    position: absolute;
+    display: flex;
+  }
+
+  .dots {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background: $text-color;
+  }
 }
 </style>
