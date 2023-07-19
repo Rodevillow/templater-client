@@ -1,14 +1,9 @@
-export const formData = reactive({
+export interface IFormDataDto {
+  email: String,
+  password?: String
+}
+
+export const formData: IFormDataDto = reactive({
   email: "",
   password: "",
-});
-
-const defaultErrorObject = {
-  isDirty: false,
-  errors: [],
-};
-
-export const errorsFormData = reactive({
-  email: { ...defaultErrorObject },
-  password: { ...defaultErrorObject },
 });

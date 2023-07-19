@@ -39,3 +39,5 @@ $prefixes: (
     }
   }
 }
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);

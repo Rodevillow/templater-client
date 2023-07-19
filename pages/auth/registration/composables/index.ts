@@ -3,14 +3,3 @@ export const formData = reactive({
   password: "",
   confirmPassword: "",
 });
-
-const defaultErrorObject = {
-  isDirty: false,
-  errors: [],
-};
-
-export const errorsFormData = reactive({
-  email: { ...defaultErrorObject },
-  password: { ...defaultErrorObject },
-  confirmPassword: { ...defaultErrorObject },
-});

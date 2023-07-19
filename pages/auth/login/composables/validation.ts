@@ -1,77 +1,15 @@
-import {
-  isRequired,
-  isEmail,
-  maxValue,
-  minValue,
-} from "~/composables/services/validation/rules";
+import useValidation from "@/composables/useValidation";
 
-export const validateEmail = (value: any, errorObject: any) => {
-  errorObject.errors = [];
-  const clearValue = value.trim();
+import { formData } from "../composables";
 
-  if (isRequired(clearValue)) {
-    errorObject.errors.push("Email field is required!");
-    return;
-  }
+export const validatorLoginForm:any = useValidation(formData, {
+  email: [
+    "required", 
+    "isEmail"
+  ],
+  password: [
+    "required"
+  ]
+});
 
-  if (maxValue(clearValue, 20)) {
-    errorObject.errors.push("Email should not be longer than 50 characters!");
-    return;
-  }
-
-  if (!isEmail(clearValue)) {
-    errorObject.errors.push("Incorrect Email!");
-    return;
-  }
-};
-
-export const validatePassword = (value: any, errorObject: any) => {
-  errorObject.errors = [];
-  const clearValue = value.trim();
-
-  if (isRequired(clearValue)) {
-    errorObject.errors.push("Password field is required!");
-    return;
-  }
-
-  if (maxValue(clearValue, 50)) {
-    errorObject.errors.push(
-      "Password should not be longer than 50 characters!"
-    );
-    return;
-  }
-
-  if (minValue(clearValue, 6)) {
-    errorObject.errors.push(
-      "Password should not be longer less than 6 characters!"
-    );
-    return;
-  }
-};
-
-// --- --- ---
-
-import { errorsFormData, formData } from "../composables";
-
-export const onFocusEmail = (event: any) => { formData.email = event.target.value; errorsFormData.email.isDirty = true; };
-export const onInputEmail = (event: any) => validateEmail(formData.email = event.target.value, errorsFormData.email);
-export const onBlurEmail = (event: any) => validateEmail(formData.email = event.target.value, errorsFormData.email);
-
-export const onFocusPassword = (event: any) => { formData.password = event.target.value; errorsFormData.password.isDirty = true; };
-export const onInputPassword = (event: any) => validatePassword(formData.password = event.target.value, errorsFormData.password);
-export const onBlurPassword = (event: any) => validatePassword(formData.password = event.target.value, errorsFormData.password);
-
-export const doValidateForm = () => {
-  errorsFormData.email.isDirty = true;
-  errorsFormData.password.isDirty = true;
-
-  validateEmail(formData.email, errorsFormData.email);
-  validatePassword(formData.password, errorsFormData.password);
-};
-
-export const isFormValid = () => !Object.values(errorsFormData).some(
-  (errorObject) => errorObject.isDirty && errorObject.errors.length > 0
-);
-
-export const validateLoginForm = (doSendFormCallback: any) => { doValidateForm(); isFormValid() && doSendFormCallback(); }
-
+export const validateLoginForm:any = (doSendFormCallback: any): void => validatorLoginForm.doValidate() && doSendFormCallback();

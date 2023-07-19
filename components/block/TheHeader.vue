@@ -1,5 +1,5 @@
 <template>
-  <header class="header d-flex justify-content-between align-items-center p-5">
+  <header class="header d-flex justify-content-between align-items-center p-5 mt-1 rounded">
     <nuxt-link to="/">
       <UiTextH1>
         TEMPLATER

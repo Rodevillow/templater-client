@@ -7,7 +7,7 @@
       {{ props.label }}
     </div>
     <slot />
-    <span class="small text-danger" v-for="error in props.errors">
+    <span class="small text-danger d-block" v-for="error in props.errors">
       {{ error }}
     </span>
   </div>
