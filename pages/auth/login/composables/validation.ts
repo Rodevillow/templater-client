@@ -8,7 +8,9 @@ export const validatorLoginForm:any = useValidation(formData, {
     "isEmail"
   ],
   password: [
-    "required"
+    "required",
+    "min:6",
+    "max:32"
   ]
 });
 
