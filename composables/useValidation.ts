@@ -2,10 +2,14 @@ import { IFormDataDto } from "~/pages/auth/login/composables";
 
 import IsRequired from "./services/validation/rules/isRequired";
 import IsEmail from "./services/validation/rules/isEmail";
+import MinLength from "./services/validation/rules/minLength";
+import MaxLength from "./services/validation/rules/maxLength";
 
 const rulesBindingsList = {
     'required': IsRequired,
     'isEmail': IsEmail,
+    'min': MinLength,
+    'max': MaxLength,
 }
 
 const defaultErrorObject = { isDirty: false, errors: [] };
@@ -36,6 +40,8 @@ export const useValidation = (formData: IFormDataDto, validationFormRules: any):
 
         for (let ruleStr of fieldRules) {
             const splittedRuleStr = ruleStr.trim().split(':');
+            const paramsForRule = splittedRuleStr.length > 1 ? { value: splittedRuleStr[1] } : {};
+
             const validationRuleClass = rulesBindingsList[splittedRuleStr[0] as keyof typeof rulesBindingsList];
             if (!validationRuleClass) { 
                 console.error('CALLBACK RULE ERROR: rule -> ' + ruleStr); 
@@ -43,9 +49,9 @@ export const useValidation = (formData: IFormDataDto, validationFormRules: any):
             }
 
             const validationRuleObject = new validationRuleClass();
-            if (!validationRuleObject.passes(fieldValue, {})) {
+            if (!validationRuleObject.passes(fieldValue, paramsForRule)) {
                 clearFieldErrors(fieldName);
-                errorObject.errors.push(validationRuleObject.message(fieldName));
+                errorObject.errors.push(validationRuleObject.message(fieldName, paramsForRule));
                 break;
             }
         }
