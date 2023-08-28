@@ -1,11 +1,11 @@
 <template>
-  <button class="btn btn-success"
-          :type="props.type"
-          @click="handleClick"
+  <UiButtonDefault
+      class="btn--success"
+      :type="props.type"
+      @click="handleClick"
   >
-    <UiIconSpinnerLoader v-if="isLoading" style="width: 1rem; height: 1rem;" />
-    <slot  v-if="!isLoading" />
-  </button>
+    <slot/>
+  </UiButtonDefault>
 </template>
 
 <script lang="ts" setup>
@@ -23,4 +23,8 @@ const emit = defineEmits(['click'])
 const handleClick = () => emit('click')
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn--success {
+  background-color: green;
+}
+</style>

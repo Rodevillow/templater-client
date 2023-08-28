@@ -1,10 +1,11 @@
 <template>
   <UiButtonDefault
-      class="custom-btn-disabled"
+      class="btn--danger"
       :type="props.type"
       @click="handleClick"
   >
-    <slot/>
+    <UiIconSpinnerLoader v-if="isLoading" style="width: 1rem; height: 1rem;" />
+    <slot  v-if="!isLoading" />
   </UiButtonDefault>
 </template>
 
@@ -24,7 +25,16 @@ const handleClick = () => emit('click')
 </script>
 
 <style lang="scss" scoped>
-.custom-btn-success {
+.btn {
+  background-color: transparent;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 10px 20px;
+  min-width: min-content;
 
+  &--danger {
+    background-color: #c71e1e;
+    color: white;
+  }
 }
 </style>

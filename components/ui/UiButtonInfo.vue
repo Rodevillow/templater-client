@@ -1,10 +1,11 @@
 <template>
   <UiButtonDefault
-      class="custom-btn-disabled"
+      class="btn--info"
       :type="props.type"
       @click="handleClick"
   >
-    <slot/>
+    <UiIconSpinnerLoader v-if="isLoading" style="width: 1rem; height: 1rem;" />
+    <slot  v-if="!isLoading" />
   </UiButtonDefault>
 </template>
 
@@ -24,7 +25,7 @@ const handleClick = () => emit('click')
 </script>
 
 <style lang="scss" scoped>
-.custom-btn-success {
-
+.btn--info {
+  background-color: #719edf;
 }
 </style>

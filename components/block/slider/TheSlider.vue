@@ -43,7 +43,7 @@ const props = defineProps({
     height: 10px;
     border: none;
     border-radius: 50%;
-    background: $text-color;
+    background: $light;
   }
 }
 </style>

@@ -14,6 +14,5 @@ p {
   font-weight: 300;
   font-size: 14px;
   line-height: 17px;
-  color: $disabled-color;
 }
 </style>

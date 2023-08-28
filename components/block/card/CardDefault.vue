@@ -4,7 +4,7 @@
 
     <div class="card__wrapper p-2">
       <UiTextH2 class="mt-2">{{ props.title }}</UiTextH2>
-      <UiDefaultText class="mt-1">{{ props.description }}</UiDefaultText>
+      <UiTextParagraph class="mt-1">{{ props.description }}</UiTextParagraph>
 
       <div class="card__wrapper-link mt-2">
         <UiIconChevronHeart />
@@ -17,6 +17,7 @@
 
 <script lang="ts" setup>
 import TheSlider from "../slider/TheSlider.vue";
+import UiTextParagraph from "~/components/ui/UiTextParagraph.vue";
 
 const props = defineProps({
   title: {
@@ -36,9 +37,9 @@ const props = defineProps({
   border: none;
   &__wrapper {
     height: 100%;
-    background: $secondary-color;
+    background: $secondary;
     &-link {
-      background: $secondary-color;
+      background: $secondary;
       display: flex;
       justify-content: flex-end;
     }
