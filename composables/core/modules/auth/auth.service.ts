@@ -2,26 +2,22 @@ import ApiUtil from "~/utils/api/api.util";
 
 export class AuthService {
 
-    private apiUtil:any
+    private apiUtil: any
 
     constructor() {
         this.apiUtil = ApiUtil.getInstance();
     }
 
-    async get(formData:Object): Promise<any> {
-        const response = await this.apiUtil.post('/auth/login', formData);
+    async login(formData: Object): Promise<any> {
+        return await this.apiUtil.post('/auth/login', formData);
     }
 
-    async create (formData:Object): Promise<any> {
-        const response = await this.apiUtil.post('/auth/register', formData);
+    async registration(formData: Object): Promise<any> {
+        return await this.apiUtil.post('/auth/register', formData);
     }
 
-    update() {
-        console.log('AuthService -> update');
-    }
-
-    delete() {
-        console.log('AuthService -> delete');
+    async logout(formData: Object): Promise<any> {
+        return await this.apiUtil.post('/auth/logout');
     }
 }
 

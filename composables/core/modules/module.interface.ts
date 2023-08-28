@@ -6,6 +6,8 @@ export interface BasicModuleInterface {
 }
 
 export interface AuthModuleInterface {
+    getStore():any
     doRegistration(data:any):any
-    doLogin():any
+    doLogin(data:any):any
+    doLogout():any
 }

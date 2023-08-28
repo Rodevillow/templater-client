@@ -20,7 +20,6 @@ export const confirmPassword = (value: any, password: any): Boolean => {
   return value != password;
 };
 
-
 // DEPRECATED
 export const maxValue = (value: any, maxValue: any = 100): Boolean => {
   return value.length > maxValue;

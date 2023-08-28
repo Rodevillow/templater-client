@@ -2376,6 +2376,11 @@ hash-sum@^2.0.0:
   resolved "https://registry.npmjs.org/hash-sum/-/hash-sum-2.0.0.tgz"
   integrity sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==
 
+highlight.js@^11.5.1:
+  version "11.8.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.8.0.tgz#966518ea83257bae2e7c9a48596231856555bb65"
+  integrity sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==
+
 hookable@^5.5.3:
   version "5.5.3"
   resolved "https://registry.npmjs.org/hookable/-/hookable-5.5.3.tgz"
@@ -3206,6 +3211,13 @@ nuxi@3.5.3:
   integrity sha512-H0/Nj0ulUN8PrSvr6H433Awt4hNT5uaN57041QfknYVXlUce7yEbl/NcpNtnneAHYn2hMUZL9/nJCVkZ1xTvHA==
   optionalDependencies:
     fsevents "~2.3.2"
+
+nuxt-highlightjs@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/nuxt-highlightjs/-/nuxt-highlightjs-1.0.3.tgz#6a7aa3450f596e1531fc1fd91c2157938dd708ce"
+  integrity sha512-3UEEyVYwjN+tg+gFF2fC/K4+xMiGCQlZ+3c19f3MCa5l90JtV7QXfU/2NpTq3yY3BeAgAYSwLVbP1SWOhVsXaw==
+  dependencies:
+    highlight.js "^11.5.1"
 
 nuxt@^3.5.2:
   version "3.5.3"
