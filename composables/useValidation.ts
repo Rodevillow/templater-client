@@ -12,6 +12,10 @@ const rulesBindingsList = {
     'max': MaxLength,
 }
 
+interface IErrorObject {
+    isDirty: boolean,
+    errors: Array<string>,
+}
 const defaultErrorObject = { isDirty: false, errors: [] };
 
 const generateErrorsFormData = (formData:any) => {
@@ -31,6 +35,8 @@ export const useValidation = (formData: IFormDataDto, validationFormRules: any):
 
     const errorsFormData = generateErrorsFormData({...formData});
 
+    const getErrorFieldByKeyName = (fieldName: String|any) => errorsFormData[fieldName as keyof typeof errorsFormData];
+
     const validateField = (fieldName: String|any, fieldRules: String|Array<any>|any) => {
 
         const formDataField:Object = Object.fromEntries(Object.entries(formData).filter(([key]) => key === fieldName));
@@ -39,12 +45,12 @@ export const useValidation = (formData: IFormDataDto, validationFormRules: any):
         errorObject.errors = [];
 
         for (let ruleStr of fieldRules) {
-            const splittedRuleStr = ruleStr.trim().split(':');
-            const paramsForRule = splittedRuleStr.length > 1 ? { value: splittedRuleStr[1] } : {};
+            const splitRuleStr = ruleStr.trim().split(':');
+            const paramsForRule = splitRuleStr.length > 1 ? { value: splitRuleStr[1] } : {};
 
-            const validationRuleClass = rulesBindingsList[splittedRuleStr[0] as keyof typeof rulesBindingsList];
+            const validationRuleClass = rulesBindingsList[splitRuleStr[0] as keyof typeof rulesBindingsList];
             if (!validationRuleClass) { 
-                console.error('CALLBACK RULE ERROR: rule -> ' + ruleStr); 
+                console.error('CALLBACK RULE ERROR: rule -> ' + ruleStr);
                 continue; 
             }
 
@@ -63,7 +69,6 @@ export const useValidation = (formData: IFormDataDto, validationFormRules: any):
         validateField(fieldName, validationFormRules[fieldName as keyof typeof validationFormRules]);
     }
 
-    
     const setAllFieldsAsIsDirtyAndClearErrors = () => {
         for (let errorEntry of Object.entries(errorsFormData)) {
             let errorObject:any = Object.fromEntries([errorEntry])[errorEntry[0]]
@@ -72,26 +77,34 @@ export const useValidation = (formData: IFormDataDto, validationFormRules: any):
         }
     }
     
-    const clearFieldErrors = (fieldName: String) => { errorsFormData[fieldName as keyof typeof errorsFormData].errors = []; }
+    const clearFieldsErrors = () => {
+        console.log('errorsFormData', errorsFormData, typeof errorsFormData);
+       errorsFormData.forEach((x:IErrorObject) => { x.isDirty = false; x.errors = []; })
+    }
+    const clearFieldErrors = (fieldName: String) => { errorsFormData[fieldName as keyof typeof errorsFormData].errors = [] }
 
-    const setIsDirty = (fieldName: String, isDirtyValue: Boolean = true):void => { errorsFormData[fieldName as keyof typeof errorsFormData].isDirty = isDirtyValue; }
+    const setIsDirty = (fieldName: String, isDirtyValue: Boolean = true):void => { errorsFormData[fieldName as keyof typeof errorsFormData].isDirty = isDirtyValue }
 
-    const isFormValid = () => !Object.values(errorsFormData).some((e:any) => e.errors.length > 0);
+    const isFormValid = () => !Object.values(errorsFormData).some((e:any) => e.errors.length > 0)
+
+    const isFieldDirty = (fieldName: String|any) => getErrorFieldByKeyName(fieldName).isDirty
 
     const doValidate = () => {
 
-        setAllFieldsAsIsDirtyAndClearErrors();
+        setAllFieldsAsIsDirtyAndClearErrors()
 
         Object.entries(validationFormRules)
-            .forEach(([fieldName, fieldRules]) => validateField(fieldName, fieldRules));
+            .forEach(([fieldName, fieldRules]) => validateField(fieldName, fieldRules))
             
-        return isFormValid();
+        return isFormValid()
     }
 
     return {
         errorsFormData,
         validateField,
         doValidateField,
+        clearFieldErrors,
+        clearFieldsErrors,
         setIsDirty,
         doValidate,
     }

@@ -12,3 +12,11 @@
 import TheHeader from "@/components/block/TheHeader.vue"
 import TheFooter from "@/components/block/TheFooter.vue"
 </script>
+
+<style lang="scss" scoped>
+@media screen and (max-width: 1040px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+</style>

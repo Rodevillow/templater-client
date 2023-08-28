@@ -1,7 +1,13 @@
-import AuthService from "~/composables/core/modules/auth/auth.service";
-import { useAuthStore } from "~/stores/authStore";
 import {T} from "untyped/dist/types-a20127ea";
-import { AuthModuleInterface } from "../module.interface";
+import {useAuthStore} from "@/stores/authStore";
+import {AuthModuleInterface} from "../module.interface";
+import AuthService from "@/composables/core/modules/auth/auth.service";
+
+import {COOKIE_STORAGE__ACCESS_TOKEN, COOKIE_STORAGE__REFRESH_TOKEN} from "@/constans/storage";
+import {
+    setItem as setItemToCookie,
+    clearItem as clearItemToCookie
+} from "@/utils/storage/cookie";
 
 interface ResponseDTO {
     success: Boolean,
@@ -18,12 +24,26 @@ export class AuthModule implements AuthModuleInterface {
         this.authService = new AuthService();
     }
 
-    async doRegistration(formData: any) {
-        await this.authService.create(formData);
+    getStore(): any {
+        return this.authStore
     }
 
-    async doLogin() {
-        // await this.authService.get();
+    async doRegistration(formData: any) {
+        await this.authService.registration(formData)
+    }
+
+    async doLogin(formData: any) {
+        const response = await this.authService.login(formData)
+        setItemToCookie(COOKIE_STORAGE__ACCESS_TOKEN, response.data.data.accessToken)
+        this.authStore.setAccessToken(response.data.data.accessToken)
+    }
+
+    async doLogout() {
+        // TODO :: Do logout on backend side
+        clearItemToCookie(COOKIE_STORAGE__ACCESS_TOKEN)
+        clearItemToCookie(COOKIE_STORAGE__REFRESH_TOKEN)
+        this.authStore.setAccessToken('')
+        this.authStore.setRefreshToken('')
     }
 }
 

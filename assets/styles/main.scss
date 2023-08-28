@@ -1,7 +1,7 @@
 @import "fonts";
 @import "variables";
-@import "bootstrap/scss/bootstrap";
-@import "spacing";
+//@import "bootstrap/scss/bootstrap";
+//@import "spacing";
 
 * {
   margin: 0;
@@ -16,8 +16,8 @@ body {
 }
 
 .container {
-  max-width: 1296px;
-  min-height: calc(100vh - 200px - 100px);
+  margin: auto;
+  max-width: 1000px;
 }
 
 // next-link navigation
@@ -32,7 +32,8 @@ a {
   transition: ease-in-out 0.3s;
 
   &:hover {
-    color: $disabled-color;
+    // TODO :: Set disable color
+    color: darkgray;
     transition: ease-in-out 0.3s;
   }
 }
@@ -40,5 +41,6 @@ a {
 // ...
 
 .page--min-height {
-  height: calc(100vh - 300px - 20px);
+  //height: calc(100vh - 300px - 20px);
+  min-height: calc(100vh - 200px - 100px);
 }
