@@ -37,12 +37,18 @@
       <!--TODO :: THIS IS PLACED HERE JUST FOR TEST-->
       <UISelect :list-of-options="listOfOptions" />
 
+      <hr>
+
+      <!--TODO :: THIS IS PLACED HERE JUST FOR TEST-->
+      <UiRateStars stars-length="5" rate="3" />
+
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import UISelect from "~/components/ui/UISelect.vue";
+
+import UISelect from "~/components/ui/UiSelect.vue";
 import DocsBlock from "~/pages/docs/components/DocsBlock.vue";
 import DocsButtons from "~/pages/docs/sections/DocsButtons.vue";
 import DocsComponents from "~/pages/docs/sections/DocsComponents.vue";

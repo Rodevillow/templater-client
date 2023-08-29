@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "test": "echo 'Test command was run!'",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
