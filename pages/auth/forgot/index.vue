@@ -1,6 +1,6 @@
 <template>
-  <div class="page--min-height">
-    <div>
+  <div class="page--min-height forgot">
+    <div class="forgot-form-wrapper">
       <ForgotForm :formData="formData" />
     </div>
   </div>
@@ -15,4 +15,15 @@ definePageMeta({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.forgot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-form-wrapper {
+    max-width: 600px;
+    width: 100%;
+  }
+}
+</style>

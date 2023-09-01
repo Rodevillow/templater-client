@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <UiTextH2 class="mb-1 text-center">FORGOT PASSWORD</UiTextH2>
+  <div class="forgot-form">
+    <UiTextH2 class="forgot-form__title">FORGOT PASSWORD</UiTextH2>
     
     <UiFormControl
-      class="mb-3"
+        class="forgot-form__field"
       label="Email"
       :errors="validatorForgotForm?.errorsFormData?.email?.errors"
     >
@@ -19,8 +19,8 @@
       />
     </UiFormControl>
 
-    <UiButtonPrimary 
-      class="w-100"
+    <UiButtonPrimary
+      type="submit"
       @click="validateForgotForm(doSendForm)"
       :isLoading="isLoading"
     >SEND RESET LINK</UiButtonPrimary>
@@ -52,4 +52,27 @@ const doSendForm = () => {
 };
 </script>
 
-<style lang="scss" scroped></style>
+<style lang="scss" scoped>
+.forgot-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__submit {
+    margin: auto;
+  }
+
+  &__forgot-link {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+</style>

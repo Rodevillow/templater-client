@@ -1,9 +1,9 @@
 <template>
   <div class="login-form">
-    <UiTextH2 class="mb-1 text-center">LOGIN</UiTextH2>
+    <UiTextH2 class="login-form__title">LOGIN</UiTextH2>
 
     <UiFormControl
-        class="mb-1"
+        class="login-form__field"
         label="Email"
         :errors="validatorLoginForm?.errorsFormData?.email?.errors"
     >
@@ -19,7 +19,7 @@
     </UiFormControl>
 
     <UiFormControl
-        class="mb-3"
+        class="login-form__field"
         label="Password"
         :errors="validatorLoginForm?.errorsFormData?.password?.errors"
     >
@@ -36,13 +36,11 @@
 
     <UiButtonPrimary
         type="submit"
-        class="w-100"
         @click="validateLoginForm(doSendForm)"
         :isLoading="isLoading"
-    >LOGIN
-    </UiButtonPrimary>
+    >LOGIN</UiButtonPrimary>
 
-    <div class="mt-2 text-center">
+    <div class="login-form__forgot-link">
       <nuxt-link to="/auth/forgot">Forgot password?</nuxt-link>
     </div>
 
@@ -55,7 +53,6 @@ import {
   validateLoginForm,
   resetValidationLoginForm,
 } from "@/pages/auth/login/composables/validation"
-import {formData} from "../composables"
 
 const props = defineProps({formData: {type: Object, required: true}})
 
@@ -75,3 +72,28 @@ const doSendForm = async () => {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__submit {
+    margin: auto;
+  }
+
+  &__forgot-link {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+</style>
