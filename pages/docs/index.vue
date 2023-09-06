@@ -7,40 +7,54 @@
     <div class="docs__content">
       <UiTextH1 class="docs__content_title">Templater UI</UiTextH1>
 
-      <DocsBlock class="docs__content_block" title="Buttons">
-        <template #default>
-          <DocsButtons id="docs-buttons"/>
-        </template>
-        <template #code>
-          ...
-        </template>
-      </DocsBlock>
-
       <DocsBlock class="docs__content_block" title="Typography">
         <DocsTypography id="docs-typography"/>
       </DocsBlock>
 
-      <DocsBlock class="docs__content_block" title="Inputs">
-        <DocsInputs id="docs-inputs"/>
+      <DocsBlock class="docs__content_block" title="Buttons">
+        <template #default>
+          <DocsButtons id="docs-buttons"/>
+        </template>
+<!--        <template v-slot:codeExample>-->
+        <template #codeExample>
+          <pre v-pre>
+            <code>
+              <p>Some random asodmasodnasdjnaso dnas djnasdjnasd jnas</p>
+<!--              <UiButtonDefault>Default</UiButtonDefault>-->
+<!--              <UiButtonDefault state="primary">Primary</UiButtonDefault>-->
+<!--              <UiButtonDefault state="secondary">Secondary</UiButtonDefault>-->
+<!--              <UiButtonDefault state="success">Success</UiButtonDefault>-->
+<!--              <UiButtonDefault state="danger">Danger</UiButtonDefault>-->
+<!--              <UiButtonDefault state="info">Info</UiButtonDefault>-->
+<!--              <UiButtonDefault state="light">Light</UiButtonDefault>-->
+<!--              <UiButtonDefault state="dark">Dark</UiButtonDefault>-->
+<!--              <UiButtonDefault state="link">Link</UiButtonDefault>-->
+            </code>
+          </pre>
+        </template>
       </DocsBlock>
 
-      <DocsBlock class="docs__content_block" title="Components">
-        <DocsComponents id="docs-components"/>
-      </DocsBlock>
+<!--      <DocsBlock class="docs__content_block" title="Inputs">-->
+<!--        <DocsInputs id="docs-inputs"/>-->
+<!--      </DocsBlock>-->
 
-      <DocsBlock class="docs__content_block" title="Icons">
-        <DocsIcons id="docs-icons"/>
-      </DocsBlock>
+<!--      <DocsBlock class="docs__content_block" title="Components">-->
+<!--        <DocsComponents id="docs-components"/>-->
+<!--      </DocsBlock>-->
 
-      <hr>
+<!--      <DocsBlock class="docs__content_block" title="Icons">-->
+<!--        <DocsIcons id="docs-icons"/>-->
+<!--      </DocsBlock>-->
+
+<!--      <hr>-->
 
       <!--TODO :: THIS IS PLACED HERE JUST FOR TEST-->
-      <UISelect :list-of-options="listOfOptions" />
+<!--      <UISelect :list-of-options="listOfOptions" />-->
 
-      <hr>
+<!--      <hr>-->
 
       <!--TODO :: THIS IS PLACED HERE JUST FOR TEST-->
-      <UiRateStars stars-length="5" rate="3" />
+<!--      <UiRateStars stars-length="5" rate="3" />-->
 
     </div>
   </div>
