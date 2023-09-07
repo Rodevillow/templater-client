@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <TheHeader />
-    <div class="page--min-height h-100">
-      <slot />
-    </div>
+    <div class="page--min-height h-100"><slot /></div>
     <TheFooter />
   </div>
 </template>

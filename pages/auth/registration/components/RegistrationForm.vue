@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <UiTextH2 class="mb-1 text-center">REGISTRATION</UiTextH2>
+  <div class="registration-form">
+    <UiTextH2 class="registration-form__title">REGISTRATION</UiTextH2>
     
     <UiFormControl
-      class="mb-1"
+      class="registration-form__field"
       label="Email"
       :errors="validatorRegistrationForm?.errorsFormData?.email?.errors"
     >
@@ -19,7 +19,7 @@
     </UiFormControl>
 
     <UiFormControl
-      class="mb-1"
+      class="registration-form__field"
       label="Password"
       :errors="validatorRegistrationForm?.errorsFormData?.password.errors"
     >
@@ -35,7 +35,7 @@
     </UiFormControl>
 
     <UiFormControl
-      class="mb-3"
+      class="registration-form__field"
       label="Confirm password"
       :errors="validatorRegistrationForm?.errorsFormData?.confirmPassword.errors"
     >
@@ -50,8 +50,8 @@
       />
     </UiFormControl>
 
-    <UiButtonPrimary 
-      class="w-100" 
+    <UiButtonPrimary
+      type="submit"
       @click="validateRegistrationForm(doSendForm)"
       :isLoading="isLoading"
     >
@@ -84,3 +84,23 @@ const doSendForm = async (): Promise<void> => {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.registration-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__submit {
+    margin: auto;
+  }
+}
+</style>

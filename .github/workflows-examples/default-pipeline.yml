@@ -1,0 +1,15 @@
+name: Default-GitHubAction
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  my_test_build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Hello message
+        run: echo "Hello bro! =)"

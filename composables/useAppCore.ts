@@ -4,7 +4,7 @@ import { AuthModuleInterface, BasicModuleInterface } from "./core/modules/module
 
 export interface CoreModules {
     auth:AuthModuleInterface,
-    items:BasicModuleInterface
+    items:BasicModuleInterface,
 }
 
 export const useAppCore = ():CoreModules => {
