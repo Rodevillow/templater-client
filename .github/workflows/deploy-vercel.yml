@@ -33,4 +33,4 @@ jobs:
       - name: DeployToVercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel --prod
+        run: vercel --prod --yes
