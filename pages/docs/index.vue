@@ -16,10 +16,11 @@
           <DocsButtons id="docs-buttons"/>
         </template>
 <!--        <template v-slot:codeExample>-->
+<!--          <pre v-pre>-->
+<!--            <code>-->
         <template #codeExample>
-          <pre v-pre>
-            <code>
-              <p>Some random asodmasodnasdjnaso dnas djnasdjnasd jnas</p>
+          <p>Some random asodmasodnasdjnaso dnas djnasdjnasd jnas</p>
+        </template>
 <!--              <UiButtonDefault>Default</UiButtonDefault>-->
 <!--              <UiButtonDefault state="primary">Primary</UiButtonDefault>-->
 <!--              <UiButtonDefault state="secondary">Secondary</UiButtonDefault>-->
@@ -29,9 +30,8 @@
 <!--              <UiButtonDefault state="light">Light</UiButtonDefault>-->
 <!--              <UiButtonDefault state="dark">Dark</UiButtonDefault>-->
 <!--              <UiButtonDefault state="link">Link</UiButtonDefault>-->
-            </code>
-          </pre>
-        </template>
+<!--            </code>-->
+<!--          </pre>-->
       </DocsBlock>
 
 <!--      <DocsBlock class="docs__content_block" title="Inputs">-->

@@ -3,7 +3,7 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - main  # Або назва вашої основної гілки
+      - main
 
 jobs:
   build:
@@ -11,23 +11,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Використовуйте версію v3
+        uses: actions/checkout@v3
 
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Встановіть версію Node.js, яка підходить для вашого проекту
+          node-version: 14
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
       - name: Install project dependencies
-        run: npm install  # Або yarn install, в залежності від вашого менеджера пакетів
+        run: npm install
 
       - name: Build
-        run: npm run build  # Або команда для збірки вашого React.js проекту
+        run: npm run build
 
       - name: Deploy to Vercel
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Додайте змінну середовища з вашим Vercel токеном в налаштуваннях репозиторію
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: vercel --prod

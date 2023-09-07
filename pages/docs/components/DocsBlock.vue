@@ -36,9 +36,8 @@ const props = defineProps({
   // }
 })
 
-
-const slots = useSlots();
-console.log('AIJSDNAKWJDNAWDJNWAIJWIKd', slots?.codeExample, slots)
+const slots = useSlots()
+console.log("slots",slots.codeExample?.())
 
 // const codeExample:String = `
 //     <UiButtonDefault>Default</UiButtonDefault>
