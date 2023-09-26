@@ -2,16 +2,22 @@
   <div class="the-side-menu-group">
     <UiTextH3>{{ props.title }}</UiTextH3>
     <ul v-if="props.items?.length > 0">
-      <li v-for="item in props.items" :key="item">
-        <UiTextParagraph>{{ item }}</UiTextParagraph>
+      <li
+          v-for="item in props.items"
+          :class="{
+            'disabled': item.disabled
+          }"
+          :key="item"
+      >
+        <a :href="'#' + item?.id">
+          {{ item.title }}
+        </a>
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts" setup>
-import UiTextParagraph from "~/components/ui/UiTextParagraph.vue";
-
 const props = defineProps({
   title: {
     type: String,
@@ -34,6 +40,10 @@ const props = defineProps({
     li {
       margin-top: 10px;
       transition: .1s;
+
+      &.disabled a {
+        color: rgba(148, 146, 146, 0.32);
+      }
 
       &:hover {
         transition: .1s;

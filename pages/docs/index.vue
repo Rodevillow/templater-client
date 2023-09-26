@@ -7,108 +7,106 @@
     <div class="docs__content">
       <UiTextH1 class="docs__content_title">Templater UI</UiTextH1>
 
-      <DocsBlock class="docs__content_block" title="Typography">
-        <DocsTypography id="docs-typography"/>
+      <DocsBlock
+          class="docs__content_block"
+          title="Typography"
+          id="typography"
+      >
+        <template #default>
+          <DocsTypography id="docs-typography"/>
+        </template>
+        <template #codeExample>
+          <TheCodeExampler :codeExample="codeExampleTypography"/>
+        </template>
       </DocsBlock>
 
-      <DocsBlock class="docs__content_block" title="Buttons">
+      <DocsBlock
+          class="docs__content_block"
+          title="Buttons"
+          id="buttons"
+      >
         <template #default>
           <DocsButtons id="docs-buttons"/>
         </template>
-<!--        <template v-slot:codeExample>-->
-<!--          <pre v-pre>-->
-<!--            <code>-->
         <template #codeExample>
-          <p>Some random asodmasodnasdjnaso dnas djnasdjnasd jnas</p>
+          <TheCodeExampler :code-example="codeExampleButtons"/>
         </template>
-<!--              <UiButtonDefault>Default</UiButtonDefault>-->
-<!--              <UiButtonDefault state="primary">Primary</UiButtonDefault>-->
-<!--              <UiButtonDefault state="secondary">Secondary</UiButtonDefault>-->
-<!--              <UiButtonDefault state="success">Success</UiButtonDefault>-->
-<!--              <UiButtonDefault state="danger">Danger</UiButtonDefault>-->
-<!--              <UiButtonDefault state="info">Info</UiButtonDefault>-->
-<!--              <UiButtonDefault state="light">Light</UiButtonDefault>-->
-<!--              <UiButtonDefault state="dark">Dark</UiButtonDefault>-->
-<!--              <UiButtonDefault state="link">Link</UiButtonDefault>-->
-<!--            </code>-->
-<!--          </pre>-->
       </DocsBlock>
 
-<!--      <DocsBlock class="docs__content_block" title="Inputs">-->
-<!--        <DocsInputs id="docs-inputs"/>-->
-<!--      </DocsBlock>-->
+      <DocsBlock
+          class="docs__content_block"
+          title="Inputs"
+          id="inputs"
+      >
+        <template #default>
+          <DocsInputs id="docs-inputs"/>
+        </template>
+        <template #codeExample>
+          <TheCodeExampler :code-example="codeExampleInputs"/>
+        </template>
+      </DocsBlock>
 
-<!--      <DocsBlock class="docs__content_block" title="Components">-->
-<!--        <DocsComponents id="docs-components"/>-->
-<!--      </DocsBlock>-->
+      <DocsBlock
+          class="docs__content_block"
+          title="Alerts"
+          id="alerts"
+      >
+        <template #default>
+          <DocsAlerts id="docs-alerts"/>
+        </template>
+        <template #codeExample>
+          <TheCodeExampler :code-example="codeExampleAlerts"/>
+        </template>
+      </DocsBlock>
 
-<!--      <DocsBlock class="docs__content_block" title="Icons">-->
-<!--        <DocsIcons id="docs-icons"/>-->
-<!--      </DocsBlock>-->
-
-<!--      <hr>-->
-
-      <!--TODO :: THIS IS PLACED HERE JUST FOR TEST-->
-<!--      <UISelect :list-of-options="listOfOptions" />-->
-
-<!--      <hr>-->
-
-      <!--TODO :: THIS IS PLACED HERE JUST FOR TEST-->
-<!--      <UiRateStars stars-length="5" rate="3" />-->
+      <DocsBlock
+          class="docs__content_block"
+          title="Badges"
+          id="badges"
+      >
+        <template #default>
+          <DocsBadges id="docs-badges"/>
+        </template>
+        <template #codeExample>
+          <TheCodeExampler :code-example="codeExampleBadges"/>
+        </template>
+      </DocsBlock>
 
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-
-import UISelect from "~/components/ui/UiSelect.vue";
+import DocsAlerts from "~/pages/docs/sections/DocsAlerts.vue";
+import DocsBadges from "~/pages/docs/sections/DocsBadges.vue";
 import DocsBlock from "~/pages/docs/components/DocsBlock.vue";
 import DocsButtons from "~/pages/docs/sections/DocsButtons.vue";
-import DocsComponents from "~/pages/docs/sections/DocsComponents.vue";
-import DocsIcons from "~/pages/docs/sections/DocsIcons.vue";
 import DocsInputs from "~/pages/docs/sections/DocsInputs.vue";
 import DocsTypography from "~/pages/docs/sections/DocsTypography.vue";
-import TheSideNavigator from "~/components/block/TheSideNavigator.vue";
 
-const listOfOptions = [
-  {
-    value: 'test1',
-    text: 'Test 1',
-  },
-  {
-    value: 'test2',
-    text: 'Test 2',
-  },
-  {
-    value: 'test3',
-    text: 'Test 3',
-  },
-];
+import TheSideNavigator from "~/components/block/TheSideNavigator.vue";
+import TheCodeExampler from "~/components/block/TheCodeExampler.vue";
+
+import codeExampleTypography from "~/pages/docs/composables/DocsTypography";
+import codeExampleButtons from "~/pages/docs/composables/DocsButtons";
+import codeExampleInputs from "~/pages/docs/composables/DocsInputs";
+import codeExampleAlerts from "~/pages/docs/composables/DocsAlerts";
+import codeExampleBadges from "~/pages/docs/composables/DocsBadges";
+
 </script>
 
 <style lang="scss" scoped>
-
-.code {
-  background-color: red;
-}
-
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
 .docs {
   display: flex;
 
   &__side-navigator {
-    max-width: 200px;
-    width: 100%;
+    width: 200px;
   }
 
   &__content {
+    max-width: calc(1000px - 200px);
     width: 100%;
-    padding: 40px;
+    padding: 40px 0 40px 40px;
 
     &_title {
       margin-bottom: 40px;
@@ -116,9 +114,9 @@ hr {
     }
 
     &_block {
-      margin-bottom: 40px;
+      margin-top: 20px;
 
-      &:last-child {
+      &:first-child {
         margin-bottom: 0;
       }
     }

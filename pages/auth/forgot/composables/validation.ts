@@ -5,7 +5,7 @@ import { formData } from "../composables";
 export const validatorForgotForm:any = useValidation(formData, {
   email: [
     "required", 
-    "isEmail"
+    "isEmail",
   ]
 });
 

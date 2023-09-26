@@ -2,10 +2,13 @@
   <div class="ui-form-control">
     <div
       class="ui-form-control__label"
-      :class="{ 'hide': label.length === 0, 'has-error': props.errors?.length > 0 }"
+      :class="{
+        'hide': label.length === 0,
+        'has-error': props.errors?.length > 0
+      }"
     >{{ props.label }}</div>
-    <slot />
-    <div class="has-error" v-for="error in props.errors">{{ error }}</div>
+    <div><slot /></div>
+    <div class="text-error has-error" v-for="error in props.errors">{{ error }}</div>
   </div>
 </template>
 
@@ -24,6 +27,10 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 @import "@/assets/styles/variables";
+
+.text-error {
+  font-size: 13px;
+}
 
 .has-error {
   color: red;
