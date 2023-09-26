@@ -2,7 +2,7 @@
   <div class="container">
     <TheHeader />
     <!-- TODO :: HERE WILL BE ADDED SIDEBAR COMPONENT -->
-    <div class="page--min-height h-100">
+    <div class="page--min-height">
       <slot />
     </div>
     <TheFooter />

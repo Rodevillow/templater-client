@@ -21,7 +21,7 @@ export class ApiUtil implements ApiUtilInterface {
                 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMmRmYTE2Yi0yM2U2LTRlODctOGQxYy0yZjkxNDY2ZDcwYTkiLCJlbWFpbCI6ImFzZEBhc2QuYXNkIiwiZmlyc3ROYW1lIjpudWxsLCJpYXQiOjE2ODg2MDIwMDYsImV4cCI6MTY4ODYwMjA2Nn0.ob0yUuaCKZoZi8DxO0QHSQ8wsAUp5G0R-a7wTOdkOxk'
             }
         };
-          
+
         this.axios = axios.create(axiosConfig)
     }
 

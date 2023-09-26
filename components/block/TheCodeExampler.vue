@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="code-container">
-      <span class="code-do-copy-btn" @click="handleDoCopy">Do copy</span>
+      <span class="code-do-copy-btn" @click="handleDoCopy">
+        <UiIconCopy />
+      </span>
       <div class="line-numbers">
         <span v-for="(line, index) in codeLines" :key="index">{{ index + 1 }}</span>
       </div>
@@ -15,7 +17,7 @@
 <script lang="ts" setup>
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
-import docsButtons from "~/pages/docs/composables/DocsButtons";
+import UiIconCopy from "~/components/ui/UiIconCopy.vue";
 
 const props = defineProps({
   codeExample: {
@@ -47,15 +49,15 @@ onMounted(() => Prism.highlightAll())
 <style lang="scss" scoped>
 
 .code-do-copy-btn {
-  border: 1px solid #48494e;
   background-color: #f5f2f0;
   position: absolute;
   right: 0;
-  top: -15px;
+  top: 0;
   padding: 5px 10px;
-  border-radius: 10px;
   cursor: pointer;
   transition: .1s;
+  box-shadow: -3px 3px 2px -4px;
+  user-select: none;
 
   &:hover {
     background-color: #e7e2e1;
@@ -86,6 +88,7 @@ onMounted(() => Prism.highlightAll())
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
 
   &:nth-child(odd) {
     background-color: #d5d5d8;
@@ -98,6 +101,12 @@ onMounted(() => Prism.highlightAll())
 
 .code-content {
   flex-grow: 1;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+pre, code {
+  width: 100%;
 }
 
 .my-code-line {
