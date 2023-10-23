@@ -35,6 +35,19 @@
 
       <DocsBlock
           class="docs__content_block"
+          title="Buttons group"
+          id="buttons-group"
+      >
+        <template #default>
+          <DocsButtonsGroup id="docs-buttons-group"/>
+        </template>
+        <template #codeExample>
+          <TheCodeExampler :code-example="codeExampleButtonsGroup"/>
+        </template>
+      </DocsBlock>
+
+      <DocsBlock
+          class="docs__content_block"
           title="Inputs"
           id="inputs"
       >
@@ -72,6 +85,19 @@
         </template>
       </DocsBlock>
 
+      <DocsBlock
+          class="docs__content_block"
+          title="Breadcrumbs"
+          id="breadcrumbs"
+      >
+        <template #default>
+          <DocsBreadcrumbs id="docs-breadcrumbs"/>
+        </template>
+        <template #codeExample>
+          <TheCodeExampler :code-example="codeExampleBreadcrumbs"/>
+        </template>
+      </DocsBlock>
+
     </div>
   </div>
 </template>
@@ -81,6 +107,8 @@ import DocsAlerts from "~/pages/docs/sections/DocsAlerts.vue";
 import DocsBadges from "~/pages/docs/sections/DocsBadges.vue";
 import DocsBlock from "~/pages/docs/components/DocsBlock.vue";
 import DocsButtons from "~/pages/docs/sections/DocsButtons.vue";
+import DocsButtonsGroup from "./sections/DocsButtonsGroup.vue";
+import DocsBreadcrumbs from "~/pages/docs/sections/DocsBreadcrumbs.vue";
 import DocsInputs from "~/pages/docs/sections/DocsInputs.vue";
 import DocsTypography from "~/pages/docs/sections/DocsTypography.vue";
 
@@ -89,9 +117,11 @@ import TheCodeExampler from "~/components/block/TheCodeExampler.vue";
 
 import codeExampleTypography from "~/pages/docs/composables/DocsTypography";
 import codeExampleButtons from "~/pages/docs/composables/DocsButtons";
+import codeExampleButtonsGroup from "~/pages/docs/composables/DocsButtonsGroup";
 import codeExampleInputs from "~/pages/docs/composables/DocsInputs";
 import codeExampleAlerts from "~/pages/docs/composables/DocsAlerts";
 import codeExampleBadges from "~/pages/docs/composables/DocsBadges";
+import codeExampleBreadcrumbs from "~/pages/docs/composables/DocsBreadcrumbs";
 
 </script>
 

@@ -25,7 +25,11 @@ const navGroups = reactive([
     title: 'Ui Elements',
     items: [
       { title: 'Typography', id: 'typography', disabled: false }, // +
+      { title: 'Alerts', id: 'alerts', disabled: false }, // +
       { title: 'Buttons', id: 'buttons', disabled: false }, // +
+      { title: 'Button group', disabled: true },
+      { title: 'Badge', id: 'badges', disabled: false }, // +
+      { title: 'Breadcrumb', id: 'breadcrumbs', disabled: false }, // +
       { title: 'Inputs', id: 'inputs', disabled: false }, // +
     ],
   },
@@ -33,11 +37,6 @@ const navGroups = reactive([
     title: 'Components',
     items: [
       { title: 'Accordion', disabled: true },
-      { title: 'Alerts', id: 'alerts', disabled: false }, // +
-      { title: 'Badge', id: 'badges', disabled: false }, // +
-      { title: 'Breadcrumb', disabled: true },
-      { title: 'Buttons', disabled: true },
-      { title: 'Button group', disabled: true },
       { title: 'Card', disabled: true },
       { title: 'Carousel', disabled: true },
       { title: 'Close button', disabled: true },
