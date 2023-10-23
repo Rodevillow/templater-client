@@ -1,49 +1,51 @@
-@import "fonts";
-@import "variables";
+@import 'fonts';
+@import 'variables';
 //@import "bootstrap/scss/bootstrap";
 //@import "spacing";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  color: $text-color;
+*,
+html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	color: $text-color;
+	scroll-behavior: smooth;
 }
 
 body {
-  background: $background-color;
+	background: $background-color;
 }
 
 .container {
-  margin: auto;
-  max-width: 1000px;
+	margin: auto;
+	max-width: 1000px;
 }
 
 // next-link navigation
 a {
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 17px;
-  text-decoration: none;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 17px;
+	text-decoration: none;
 
-  color: $text-color;
-  transition: ease-in-out 0.3s;
+	color: $text-color;
+	transition: ease-in-out 0.3s;
 
-  &:hover {
-    // TODO :: Set disable color
-    color: darkgray;
-    transition: ease-in-out 0.3s;
-  }
+	&:hover {
+		// TODO :: Set disable color
+		color: darkgray;
+		transition: ease-in-out 0.3s;
+	}
 }
 
 // ...
 
 .page--min-height {
-  min-height: calc(100vh - 200px - 140px);
+	min-height: calc(100vh - 200px - 140px);
 }
 
 hr {
-  margin: 40px 0;
+	margin: 40px 0;
 }
