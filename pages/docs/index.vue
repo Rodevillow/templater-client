@@ -79,9 +79,21 @@
 				</template>
 			</DocsBlock>
 
+			<DocsBlock
+				class="docs__content_block"
+				title="Accordion"
+				id="accordion">
+				<template #default>
+					<DocsAccordion id="docs-accordion" />
+				</template>
+				<template #codeExample>
+					<TheCodeExampler :code-example="codeExampleAccordion" />
+				</template>
+			</DocsBlock>
+
 			<DocsBlock class="docs__content_block" title="Card" id="card">
 				<template #default>
-					<DocsCard id="docs-card" />
+					<DocsCard />
 				</template>
 				<template #codeExample>
 					<TheCodeExampler :code-example="codeExampleCard" />
@@ -101,6 +113,7 @@ import DocsBreadcrumbs from '~/pages/docs/sections/DocsBreadcrumbs.vue'
 import DocsInputs from '~/pages/docs/sections/DocsInputs.vue'
 import DocsTypography from '~/pages/docs/sections/DocsTypography.vue'
 
+import DocsAccordion from '~/pages/docs/sections/DocsAccordion.vue'
 import DocsCard from '~/pages/docs/sections/DocsCard.vue'
 
 import TheSideNavigator from '~/components/block/TheSideNavigator.vue'
@@ -114,6 +127,7 @@ import codeExampleAlerts from '~/pages/docs/composables/DocsAlerts'
 import codeExampleBadges from '~/pages/docs/composables/DocsBadges'
 import codeExampleBreadcrumbs from '~/pages/docs/composables/DocsBreadcrumbs'
 import codeExampleCard from '~/pages/docs/composables/DocsCard'
+import codeExampleAccordion from './composables/DocsAccordion'
 </script>
 
 <style lang="scss" scoped>
