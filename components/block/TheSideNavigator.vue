@@ -35,7 +35,7 @@ const navGroups = reactive([
 	{
 		title: 'Components',
 		items: [
-			{ title: 'Accordion', disabled: true },
+			{ title: 'Accordion', id: 'accordion', disabled: false }, // +
 			{ title: 'Card', id: 'card', disabled: false }, // +
 			{ title: 'Carousel', disabled: true },
 			{ title: 'Close button', disabled: true },
