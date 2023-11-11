@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .level1 { list-style-type: none; }
+        .level2 { list-style-type: none; }
+        .level3 { list-style-type: none; }
+    </style>
+</head>
+<body>
+<ol class="level1">
+    <li>This is the first level.
+        <ul class="level2">
+            <li>This would be the second level.
+                <ul class="level3">
+                    <li>This would be the third level.</li>
+                    <li>This is another 3rd level item.</li>
+                </ul>
+            </li>
+            <li>This is a second level item.</li>
+        </ul>
+    </li>
+    <li>Example text for next first level item.</li>
+</ol>
+
+<script>
+    const level1Items = document.querySelectorAll(".level1 > li");
+    let level1Counter = 0;
+
+    level1Items.forEach(item => {
+        level1Counter++;
+        const level2Items = item.querySelectorAll(".level2 > li");
+        let level2Counter = 0;
+
+        level2Items.forEach(level2Item => {
+            level2Counter++;
+            const level3Items = level2Item.querySelectorAll(".level3 > li");
+            let level3Counter = 'а'.charCodeAt(0);
+
+            level3Items.forEach(level3Item => {
+                level3Counter++;
+                level3Item.innerHTML = `${String.fromCharCode(level3Counter)}) ${level3Item.innerHTML}`;
+            });
+
+            level2Item.innerHTML = `<span class="level2-counter">${level1Counter}.${level2Counter}</span> ${level2Item.innerHTML}`;
+        });
+
+        item.innerHTML = `${level1Counter}. ${item.innerHTML}`;
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Ваш сайт з 3D моделлю</title>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="3d-container"></div>-->
+<!--<script>-->
+<!--    var scene = new THREE.Scene();-->
+<!--    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);-->
+<!--    var renderer = new THREE.WebGLRenderer();-->
+<!--    renderer.setSize(window.innerWidth, window.innerHeight);-->
+<!--    document.getElementById('3d-container').appendChild(renderer.domElement);-->
+
+<!--    // Додайте вашу 3D модель тут-->
+<!--    var geometry = new THREE.BoxGeometry();-->
+<!--    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });-->
+<!--    var cube = new THREE.Mesh(geometry, material);-->
+<!--    scene.add(cube);-->
+
+<!--    camera.position.z = 5;-->
+
+<!--    var animate = function () {-->
+<!--        requestAnimationFrame(animate);-->
+
+<!--        // Анімація вашої 3D моделі-->
+<!--        cube.rotation.x += 0.01;-->
+<!--        cube.rotation.y += 0.01;-->
+
+<!--        renderer.render(scene, camera);-->
+<!--    };-->
+
+<!--    animate();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

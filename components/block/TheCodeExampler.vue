@@ -2,7 +2,8 @@
   <div>
     <div class="code-container">
       <span class="code-do-copy-btn" @click="handleDoCopy">
-        <UiIconCopy />
+        <UiIconCopy v-if="!copyWasTriggered" />
+        <UiIconCheckInSquare v-if="copyWasTriggered" />
       </span>
       <div class="line-numbers">
         <span v-for="(line, index) in codeLines" :key="index">{{ index + 1 }}</span>
@@ -18,6 +19,7 @@
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import UiIconCopy from "~/components/ui/UiIconCopy.vue";
+import UiIconCheckInSquare from "~/components/ui/UiIconCheckInSquare.vue"
 
 const props = defineProps({
   codeExample: {
@@ -26,9 +28,11 @@ const props = defineProps({
   }
 })
 
+const copyWasTriggered = ref(false)
 const codeLines = props.codeExample.trim().split('\n')
 
 const copyTextToClipboard = (textToCopy = '') => {
+  copyWasTriggered.value = true;
   let textarea = document.createElement("textarea")
   textarea.value = textToCopy
   document.body.appendChild(textarea)
@@ -36,18 +40,19 @@ const copyTextToClipboard = (textToCopy = '') => {
   let successful = document.execCommand('copy')
   textarea.blur()
   document.body.removeChild(textarea)
-  return successful
+  if (successful) {
+    setTimeout(() => copyWasTriggered.value = false, 1000)
+  } else {
+    alert('Oops something went wrong with copying. =(')
+  }
 }
 
-const handleDoCopy = () => copyTextToClipboard(props.codeExample)
-    ? alert("Copying was successfully!")
-    : alert("Copying was failed!");
+const handleDoCopy = () => copyTextToClipboard(props.codeExample);
 
 onMounted(() => Prism.highlightAll())
 </script>
 
 <style lang="scss" scoped>
-
 .code-do-copy-btn {
   background-color: #f5f2f0;
   position: absolute;
@@ -55,18 +60,18 @@ onMounted(() => Prism.highlightAll())
   top: 0;
   padding: 5px 10px;
   cursor: pointer;
-  transition: .1s;
+  transition: 1s;
   box-shadow: -3px 3px 2px -4px;
   user-select: none;
 
   &:hover {
     background-color: #e7e2e1;
-    transition: .1s;
+    transition: 1s;
   }
 
   &:active {
     background-color: #dededc;
-    transition: .1s;
+    transition: 1s;
   }
 }
 
@@ -143,5 +148,6 @@ code[class*="language-"] {
 pre[class*="language-"] {
   padding: 0;
   margin: 0;
+  text-shadow: none;
 }
 </style>
