@@ -32,13 +32,3 @@ program.command('generate <name>')
     });
 
 program.parse(process.argv);
-
-// const projectQwe = [
-//     <UiFormControl
-//         label="Odin label"
-//     >
-//         <UiInput
-//             placeholder="Some test"
-//         />
-//     </UiFormControl>
-// ]
