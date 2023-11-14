@@ -2,13 +2,13 @@
   <div class="card rounded overflow-hidden border-none">
     <TheSlider />
 
-    <div class="card__wrapper p-2">
-      <UiTextH2 class="mt-2">{{ props.title }}</UiTextH2>
-      <UiTextParagraph class="mt-1">{{ props.description }}</UiTextParagraph>
+    <div class="card__wrapper">
+      <UiTextH2 class="card__title">{{ props.title }}</UiTextH2>
+      <UiTextParagraph class="card__description">{{ props.description }}</UiTextParagraph>
 
-      <div class="card__wrapper-link mt-2">
+      <div class="card__wrapper-link">
         <UiIconChevronHeart />
-        <UiIconChevronCartEmpty class="ml-2" />
+        <UiIconChevronCartEmpty />
       </div>
 
     </div>
@@ -35,14 +35,35 @@ const props = defineProps({
 @import "@/assets/styles/variables";
 .card {
   border: none;
+
   &__wrapper {
     height: 100%;
-    background: $secondary;
+    background: var(--color-default);
+
     &-link {
-      background: $secondary;
       display: flex;
       justify-content: flex-end;
+      padding: calc(var(--spacer) * 2);
+
+      svg {
+        stroke: var(--color-secondary);
+        height: 20px;
+        width: 20px;
+        margin-right: var(--spacer);
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
+  }
+
+  &__title {
+    padding: var(--spacer) calc(var(--spacer) * 2);
+  }
+
+  &__description {
+    padding: var(--spacer) calc(var(--spacer) * 2);
   }
 }
 </style>

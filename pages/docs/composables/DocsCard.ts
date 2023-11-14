@@ -1,5 +1,8 @@
 export const codeExampleCard = `
-<CardDefault  title="your title item" description="your description item" />
+<CardDefault
+    title='Test title for CardDefault'
+    description='Test description for CardDefault'
+/>
 `
 
 export default codeExampleCard
