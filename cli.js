@@ -4,22 +4,22 @@ const path = require('path');
 
 program
     .version('1.0.0')
-    .description('Генератор компонентів Vue 3');
+    .description('Vue 3 components generator');
 
 program.command('generate <name>')
-    .description('Генерувати новий компонент Vue 3')
+    .description('Generating new component Vue 3')
     .action((name) => {
         if (!name) {
-            console.error('Потрібно вказати назву компонента. Використовуйте опцію -c.');
+            console.error('To set component name. Use option -c.');
             process.exit(1);
         }
 
         const componentName = name;
-        const componentFileName = `${componentName}.vue`;
-        const componentFilePath = path.join(__dirname, componentFileName); // Оновлений шлях
+        const componentFileName = `./components/ui/${componentName}.vue`;
+        const componentFilePath = path.join(__dirname, componentFileName);
 
         if (fs.existsSync(componentFilePath)) {
-            console.error(`Компонент з ім'ям ${componentName} вже існує.`);
+            console.error(`The component ${componentName} is exist.`);
             process.exit(1);
         }
 
@@ -28,7 +28,7 @@ program.command('generate <name>')
 
         fs.writeFileSync(componentFilePath, componentContent);
 
-        console.log(`Компонент ${componentName} був успішно створений у файлі ${componentFileName}.`);
+        console.log(`The component ${componentName} was successfully created by path ${componentFileName}.`);
     });
 
 program.parse(process.argv);

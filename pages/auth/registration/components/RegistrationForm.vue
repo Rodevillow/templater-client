@@ -71,7 +71,7 @@ const appCore = useAppCore();
 
 const doSendForm = async (): Promise<void> => {
   isLoading.value = true;
-  
+
   try {
     await appCore.auth.doRegistration(props.formData);
     useRouter().push({path: '/auth/login'});
