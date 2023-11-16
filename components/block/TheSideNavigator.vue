@@ -10,55 +10,55 @@
 </template>
 
 <script lang="ts" setup>
-import TheSideNavigatorGroup from '~/components/block/TheSideNavigatorGroup.vue'
+import TheSideNavigatorGroup from "~/components/block/TheSideNavigatorGroup.vue"
 
 const navGroups = reactive([
 	{
-		title: 'Getting started',
+		title: "Getting started",
 		items: [
-			{ title: 'Introduction', disabled: true },
-			{ title: 'Installing', disabled: true },
+			{ title: "Introduction", disabled: true },
+			{ title: "Installing", disabled: true },
 		],
 	},
 	{
-		title: 'Ui Elements',
+		title: "Ui Elements",
 		items: [
-			{ title: 'Typography', id: 'typography', disabled: false }, // +
-			{ title: 'Alerts', id: 'alerts', disabled: false }, // +
-			{ title: 'Buttons', id: 'buttons', disabled: false }, // +
-			{ title: 'Button group', disabled: true },
-			{ title: 'Badge', id: 'badges', disabled: false }, // +
-			{ title: 'Breadcrumb', id: 'breadcrumbs', disabled: false }, // +
-			{ title: 'Inputs', id: 'inputs', disabled: false }, // +
+			{ title: "Typography", id: "typography", disabled: false }, // +
+			{ title: "Alerts", id: "alerts", disabled: false }, // +
+			{ title: "Buttons", id: "buttons", disabled: false }, // +
+			{ title: "Button group", id: "buttons-group", disabled: false }, // +
+			{ title: "Badge", id: "badges", disabled: false }, // +
+			{ title: "Breadcrumb", id: "breadcrumbs", disabled: false }, // +
+			{ title: "Inputs", id: "inputs", disabled: false }, // +
 		],
 	},
 	{
-		title: 'Components',
+		title: "Components",
 		items: [
-			{ title: 'Accordion', id: 'accordion', disabled: false }, // +
-			{ title: 'Card', id: 'card', disabled: false }, // +
-			{ title: 'Carousel', disabled: true },
-			{ title: 'Close button', disabled: true },
-			{ title: 'Collapse', disabled: true },
-			{ title: 'Dropdowns', disabled: true },
-			{ title: 'List group', disabled: true },
-			{ title: 'Modal', disabled: true },
-			{ title: 'Navs & tabs', disabled: true },
-			{ title: 'Navbar', disabled: true },
-			{ title: 'Pagination', disabled: true },
-			{ title: 'Offcanvas', disabled: true },
-			{ title: 'Popovers', disabled: true },
-			{ title: 'Progress', disabled: true },
-			{ title: 'Scrollspy', disabled: true },
-			{ title: 'Spinners', disabled: true },
-			{ title: 'Toasts', disabled: true },
+			{ title: "Accordion", id: "accordion", disabled: false }, // +
+			{ title: "Card", id: "card", disabled: false }, // +
+			{ title: "Carousel", disabled: true },
+			{ title: "Close button", disabled: true },
+			{ title: "Collapse", disabled: true },
+			{ title: "Dropdowns", disabled: true },
+			{ title: "List group", disabled: true },
+			{ title: "Modal", disabled: true },
+			{ title: "Navs & tabs", disabled: true },
+			{ title: "Navbar", disabled: true },
+			{ title: "Pagination", disabled: true },
+			{ title: "Offcanvas", disabled: true },
+			{ title: "Popovers", disabled: true },
+			{ title: "Progress", disabled: true },
+			{ title: "Scrollspy", disabled: true },
+			{ title: "Spinners", disabled: true },
+			{ title: "Toasts", disabled: true },
 		],
 	},
 	{
-		title: 'Smart components & Modules',
+		title: "Smart components & Modules",
 		items: [
-			{ title: 'Uploader', disabled: true },
-			{ title: 'Pagination', disabled: true },
+			{ title: "Uploader", disabled: true },
+			{ title: "Pagination", disabled: true },
 		],
 	},
 ])
