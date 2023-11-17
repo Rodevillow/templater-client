@@ -65,23 +65,23 @@ const themesData = reactive([
 		colors: {
 			background: "white",
 			text: "black",
-			success: "green",
+			success: "#12ad12",
 		},
 	},
 	{
 		name: "Bright",
 		colors: {
-			background: "blue",
-			text: "green",
+			background: "#c4c4ff",
+			text: "#4753ff",
 			success: "orange",
 		},
 	},
 	{
 		name: "Rain",
 		colors: {
-			background: "brown",
-			text: "#5890bd",
-			success: "orange",
+			background: "#2b1609",
+			text: "#d4dae0",
+			success: "green",
 		},
 	},
 ])
