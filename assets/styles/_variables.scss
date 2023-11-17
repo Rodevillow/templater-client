@@ -3,6 +3,11 @@
   // Space step (padding, margin )
   --spacer: 10px;
   // ...
+  --default-transition: .5s;
+  // ...
+  --color-background: white;
+  --color-text: green;
+  // ...
   --color-default: gainsboro;
   --color-primary: blue;
   --color-secondary: blue;
@@ -10,8 +15,8 @@
   --color-success: green;
   --color-warning: orange;
   --color-danger: #af160e;
+  --color-dark: #7b7b81;
   --color-light: white;
-  --color-dark: #48494d;
 }
 
 // Static variables
@@ -28,5 +33,5 @@ $light: var(--color-light);
 $dark: var(--color-dark);
 
 // Background
-$background-color: $light;
-$text-color: $dark;
+//$background-color: $light;
+//$text-color: $dark;

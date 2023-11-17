@@ -104,30 +104,30 @@
 </template>
 
 <script lang="ts" setup>
-import DocsAlerts from '~/pages/docs/sections/DocsAlerts.vue'
-import DocsBadges from '~/pages/docs/sections/DocsBadges.vue'
-import DocsBlock from '~/pages/docs/components/DocsBlock.vue'
-import DocsButtons from '~/pages/docs/sections/DocsButtons.vue'
-import DocsButtonsGroup from './sections/DocsButtonsGroup.vue'
-import DocsBreadcrumbs from '~/pages/docs/sections/DocsBreadcrumbs.vue'
-import DocsInputs from '~/pages/docs/sections/DocsInputs.vue'
-import DocsTypography from '~/pages/docs/sections/DocsTypography.vue'
+import DocsAlerts from "~/pages/docs/sections/DocsAlerts.vue"
+import DocsBadges from "~/pages/docs/sections/DocsBadges.vue"
+import DocsBlock from "~/pages/docs/components/DocsBlock.vue"
+import DocsButtons from "~/pages/docs/sections/DocsButtons.vue"
+import DocsButtonsGroup from "./sections/DocsButtonsGroup.vue"
+import DocsBreadcrumbs from "~/pages/docs/sections/DocsBreadcrumbs.vue"
+import DocsInputs from "~/pages/docs/sections/DocsInputs.vue"
+import DocsTypography from "~/pages/docs/sections/DocsTypography.vue"
 
-import DocsAccordion from '~/pages/docs/sections/DocsAccordion.vue'
-import DocsCard from '~/pages/docs/sections/DocsCard.vue'
+import DocsAccordion from "~/pages/docs/sections/DocsAccordion.vue"
+import DocsCard from "~/pages/docs/sections/DocsCard.vue"
 
-import TheSideNavigator from '~/components/block/TheSideNavigator.vue'
-import TheCodeExampler from '~/components/block/TheCodeExampler.vue'
+import TheSideNavigator from "~/components/block/TheSideNavigator.vue"
+import TheCodeExampler from "~/components/block/TheCodeExampler.vue"
 
-import codeExampleTypography from '~/pages/docs/composables/DocsTypography'
-import codeExampleButtons from '~/pages/docs/composables/DocsButtons'
-import codeExampleButtonsGroup from '~/pages/docs/composables/DocsButtonsGroup'
-import codeExampleInputs from '~/pages/docs/composables/DocsInputs'
-import codeExampleAlerts from '~/pages/docs/composables/DocsAlerts'
-import codeExampleBadges from '~/pages/docs/composables/DocsBadges'
-import codeExampleBreadcrumbs from '~/pages/docs/composables/DocsBreadcrumbs'
-import codeExampleCard from '~/pages/docs/composables/DocsCard'
-import codeExampleAccordion from './composables/DocsAccordion'
+import codeExampleTypography from "~/pages/docs/composables/DocsTypography"
+import codeExampleButtons from "~/pages/docs/composables/DocsButtons"
+import codeExampleButtonsGroup from "~/pages/docs/composables/DocsButtonsGroup"
+import codeExampleInputs from "~/pages/docs/composables/DocsInputs"
+import codeExampleAlerts from "~/pages/docs/composables/DocsAlerts"
+import codeExampleBadges from "~/pages/docs/composables/DocsBadges"
+import codeExampleBreadcrumbs from "~/pages/docs/composables/DocsBreadcrumbs"
+import codeExampleCard from "~/pages/docs/composables/DocsCard"
+import codeExampleAccordion from "./composables/DocsAccordion"
 </script>
 
 <style lang="scss" scoped>
@@ -139,9 +139,10 @@ import codeExampleAccordion from './composables/DocsAccordion'
 	}
 
 	&__content {
-		max-width: calc(1000px - 200px);
+		max-width: 1000px;
 		width: 100%;
 		padding: 40px 0 40px 40px;
+		margin: 0 auto;
 
 		&_title {
 			margin-bottom: 40px;
