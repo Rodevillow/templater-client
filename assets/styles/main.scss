@@ -9,13 +9,14 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  color: $text-color;
+  //color: $text-color;
   scroll-behavior: smooth;
 }
 
 body {
-  background: $background-color;
-  transition: .5s;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: var(--default-transition);
 }
 
 .container {
@@ -32,13 +33,14 @@ a {
   line-height: 17px;
   text-decoration: none;
 
-  color: $text-color;
-  transition: ease-in-out 0.3s;
+  //color: $text-color;
+  //transition: ease-in-out 0.3s;
 
   &:hover {
     // TODO :: Set disable color
-    color: darkgray;
-    transition: ease-in-out 0.3s;
+    color: var(--color-text);
+    opacity: .5;
+    //transition: ease-in-out 0.3s;
   }
 }
 

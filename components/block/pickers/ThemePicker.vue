@@ -13,13 +13,13 @@
 			@click.stop
 		>
 			<div
-				v-for="themeData in themesData"
+				v-for="(themeData, index) in themesData"
 				class="theme-picker__item"
 				:style="{
 					'background-color': themeData.colors.background,
 					'border-color': themeData.colors.text
 				}"
-				@click.stop="handleThemeChoice('light')"
+				@click.stop="handleThemeChoice(index)"
 				:key="themeData.name"
 			>
 				<UiIconSun :style="{
@@ -41,48 +41,6 @@
 					></span>
 				</div>
 			</div>
-
-			<!-- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
-			<!--			<div-->
-			<!--				class="theme-picker__item"-->
-			<!--				@click.stop="handleThemeChoice('light')"-->
-			<!--			>-->
-			<!--				<UiIconSun />-->
-			<!--				<span class="theme-name">Light</span>-->
-			<!--				<div class="theme-picker__item-colors">-->
-			<!--					<span style="background-color: white;"></span>-->
-			<!--					<span style="background-color: red;"></span>-->
-			<!--					<span style="background-color: black;"></span>-->
-			<!--				</div>-->
-			<!--			</div>-->
-
-			<!--			<div-->
-			<!--				class="theme-picker__item"-->
-			<!--				@click.stop="handleThemeChoice('dark')"-->
-			<!--			>-->
-			<!--				<UiIconMoonStart />-->
-			<!--				<span class="theme-name">Dark</span>-->
-			<!--				<div class="theme-picker__item-colors">-->
-			<!--					<span style="background-color: blue;"></span>-->
-			<!--					<span style="background-color: orange;"></span>-->
-			<!--					<span style="background-color: brown;"></span>-->
-			<!--				</div>-->
-			<!--			</div>-->
-
-			<!--			<div-->
-			<!--				class="theme-picker__item"-->
-			<!--				@click.stop="handleThemeChoice('dark')"-->
-			<!--			>-->
-			<!--				<UiIconMoonStart />-->
-			<!--				<span class="theme-name">Night</span>-->
-			<!--				<div class="theme-picker__item-colors">-->
-			<!--					<span style="background-color: blue;"></span>-->
-			<!--					<span style="background-color: orange;"></span>-->
-			<!--					<span style="background-color: brown;"></span>-->
-			<!--				</div>-->
-			<!--			</div>-->
-
-			<!-- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
 
 		</div>
 	</div>
@@ -114,7 +72,7 @@ const themesData = reactive([
 		name: "Bright",
 		colors: {
 			background: "blue",
-			text: "red",
+			text: "green",
 			success: "orange",
 		},
 	},
@@ -122,14 +80,15 @@ const themesData = reactive([
 		name: "Rain",
 		colors: {
 			background: "brown",
-			text: "red",
+			text: "#5890bd",
 			success: "orange",
 		},
 	},
 ])
 
-const handleThemeChoice = (themeName: string) => {
-	console.log("handleThemeChoice", themeName)
+const handleThemeChoice = (index: number) => {
+	document.documentElement.style.setProperty("--color-background", themesData[index].colors.background)
+	document.documentElement.style.setProperty("--color-text", themesData[index].colors.text)
 }
 </script>
 

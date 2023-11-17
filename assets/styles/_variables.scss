@@ -3,6 +3,11 @@
   // Space step (padding, margin )
   --spacer: 10px;
   // ...
+  --default-transition: .5s;
+  // ...
+  --color-background: white;
+  --color-text: green;
+  // ...
   --color-default: gainsboro;
   --color-primary: blue;
   --color-secondary: blue;
@@ -28,5 +33,5 @@ $light: var(--color-light);
 $dark: var(--color-dark);
 
 // Background
-$background-color: $light;
-$text-color: $dark;
+//$background-color: $light;
+//$text-color: $dark;

@@ -60,7 +60,7 @@ const onBlur = (event: any): void => emit("blur", event)
 	margin: 0;
 	padding: 15px;
 	background-color: transparent;
-	border: 1px solid $text-color;
+	border: 1px solid var(--color-text);
 	border-radius: 8px;
 	outline: none;
 	// TODO :: Add disable color
