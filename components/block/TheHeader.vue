@@ -17,6 +17,14 @@
 
 					<div class="header__menu-right_item">
 						<NuxtLink
+							to="/builder"
+							:active-class="currentRouteName === 'builder'"
+						>Builder
+						</NuxtLink>
+					</div>
+
+					<div class="header__menu-right_item">
+						<NuxtLink
 							to="/docs"
 							:active-class="currentRouteName === 'docs'"
 						>Docs

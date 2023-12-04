@@ -52,7 +52,7 @@ const onBlur = (event: any): void => emit("blur", event)
 
 <style lang="scss" scoped>
 @import "@/assets/styles/variables";
-
+ 
 .input {
 	box-sizing: border-box;
 	width: 100%;
